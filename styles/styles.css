@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+}
+body {
+  font-family: "Alkalami", sans-serif;
+  color: blue;
+  background-color: black;
+
+  user-select: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin-top: 25px;
+}
+.title span {
+  color: orangered;
+}
+.js-gamesList {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 32px;
+  transition-property: opacity;
+  transition-duration: 1050ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.js-gamesListItem,
+.js-new-title {
+  font-family: "Alkalami", sans-serif;
+  font-size: 42px;
+  font-weight: 300;
+
+  transition-property: opacity;
+  transition-duration: 1050ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.js-new-title {
+  margin-bottom: 70px;
+  transition-property: opacity;
+  transition-duration: 1050ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.js-choosenGame {
+  font-family: "Alkalami", sans-serif;
+  font-size: 120px;
+
+  transition-property: color, opacity;
+  transition-duration: 1050ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
