@@ -1,80 +1,65 @@
-const games = [
-  "Far Cry" + ",",
-  "Ice Age 3" + ",",
-  "Madagascar" + ",",
-  "Zuma" + ",",
-  "S.T.A.L.K.E.R.",
+const items = [
+  "First item",
+  "Second item",
+  "Third item",
+  "Fourth item",
+  "Five's item",
 ];
-const randomGames = Math.floor(Math.random() * games.length);
-const choosenGame = games[randomGames];
-const choosenGameSliced = choosenGame.replace(/[\s,%]/g, " ");
+const randomItems = Math.floor(Math.random() * items.length);
+const choosenItem = items[randomItems];
+const choosenItemSliced = choosenItem.replace(/[\s,%]/g, " ");
 
 const elements = {
   overlay: document.querySelector(".overlay-preloader"),
   main: document.querySelector("#main"),
+  list: document.querySelector("#item-list"),
+  newTitle: document.querySelector(".js-new-title"),
+  advertisement: document.querySelector(".js-choosenItem"),
 };
 
-window.addEventListener("load", createGameList);
+window.addEventListener("load", createItemList);
 
-function createGameList() {
-  // define choosen game
-  const advertisement = document.querySelector(".js-choosenGame");
-  const gamesList = document.createElement("ul");
-  gamesList.classList.add("js-gamesList");
+function createItemList() {
+  //! hide preloader
+  elements.overlay.style.opacity = "0";
 
-  //   create gamesList
-  for (let i = 0; i < games.length; i++) {
-    const gamesListItem = document.createElement("li");
-    gamesListItem.textContent = games[i];
-    gamesListItem.classList.add("js-gamesListItem");
-    gamesListItem.style.color = "orange";
+  //!   create items
+  for (let i = 0; i < items.length; i++) {
+    const listItem = document.createElement("li");
+    listItem.textContent = items[i];
+    listItem.style.color = "orange";
 
-    gamesList.append(gamesListItem);
-    gamesList.style.opacity = 0;
-
-    elements.main.append(gamesList);
+    elements.list.append(listItem);
   }
 
-  //!   make games list active
+  //!   make item list active
   setTimeout(() => {
-    gamesList.style.opacity = 1;
+    elements.list.style.opacity = 1;
   }, 500);
-  //! create 'she will choose' str (disactive)
-  const newTitle = document.createElement("h2");
-  newTitle.textContent = "Wheel of Fortune will give you...";
-  newTitle.classList.add("js-new-title");
-  newTitle.style.opacity = "0";
-  elements.main.append(newTitle);
 
-  //!   make "she will choose" active
+  //!   make "He will choose" active
   setTimeout(() => {
-    newTitle.style.opacity = "1";
+    elements.newTitle.style.opacity = "1";
   }, 1500);
 
-  //! make choosen game
+  //! make choosen item
   setTimeout(() => {
-    const advertisement = document.createElement("p");
-    advertisement.textContent = choosenGameSliced;
-    advertisement.classList.add("js-choosenGame");
-    advertisement.style.opacity = "0";
-    elements.main.append(advertisement);
+    elements.advertisement.textContent = choosenItemSliced;
   }, 2700);
-  // !  make choosen game active
+
+  // !  make choosen item active
   setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenGame");
-    advertisement.style.opacity = "1";
+    elements.advertisement.style.opacity = "1";
   }, 3200);
-  //!   change color of choosen game
+
+  //!   change color of choosen item
   setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenGame");
-    advertisement.style.color = "orangered";
+    elements.advertisement.style.color = "orangered";
   }, 3700);
   setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenGame");
-    advertisement.style.color = "blue";
+    elements.advertisement.style.color = "blue";
   }, 4300);
   setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenGame");
-    advertisement.style.color = "orangered";
+    elements.advertisement.style.color = "orangered";
   }, 4800);
 }
