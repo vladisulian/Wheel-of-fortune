@@ -1,12 +1,6 @@
-const items = [
-  "First item",
-  "Second item",
-  "Third item",
-  "Fourth item",
-  "Five's item",
-];
-const randomItems = Math.floor(Math.random() * items.length);
-const choosenItem = items[randomItems];
+const userItems = ["first", "second", "third"];
+const randomItems = Math.floor(Math.random() * userItems.length);
+const choosenItem = userItems[randomItems];
 const choosenItemSliced = choosenItem.replace(/[\s,%]/g, " ");
 
 const elements = {
@@ -15,7 +9,15 @@ const elements = {
   list: document.querySelector("#item-list"),
   newTitle: document.querySelector(".js-new-title"),
   advertisement: document.querySelector(".js-choosenItem"),
+  newOrderBtn: document.querySelector(".button-link-to-index"),
+  newOrderBtnLink: document.querySelector("#index-link"),
 };
+
+// button text changing
+elements.newOrderBtn.addEventListener("click", onNewOrderBtn);
+function onNewOrderBtn() {
+  elements.newOrderBtnLink.textContent = "Relocating";
+}
 
 window.addEventListener("load", createItemList);
 
@@ -29,9 +31,9 @@ function createItemList() {
   }, 1000);
 
   //!   create items
-  for (let i = 0; i < items.length; i++) {
+  for (let i = 0; i < userItems.length; i++) {
     const listItem = document.createElement("li");
-    listItem.textContent = items[i];
+    listItem.textContent = userItems[i];
     listItem.style.color = "orange";
 
     elements.list.append(listItem);

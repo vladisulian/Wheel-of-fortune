@@ -7,6 +7,7 @@ form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
   if (input.value === "") {
+    return;
     alert("You need to fill this area");
   } else {
     formElement = event.currentTarget.elements;
