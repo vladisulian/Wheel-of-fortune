@@ -33,6 +33,11 @@ body {
     width: 480px;
   }
 }
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
+}
 
 /* - - - - - */
 .overlay-preloader {
@@ -117,6 +122,11 @@ main {
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+@media screen and (min-width: 1200px) {
+  .js-new-title {
+    font-size: 35px;
+  }
+}
 
 .js-choosenItem {
   font-family: "Alkalami", sans-serif;
@@ -172,6 +182,7 @@ main {
   width: 110px;
   height: 40px;
   margin: 30px;
+  cursor: pointer;
   /* padding: 5px; */
   background-color: transparent;
   border: 1px solid tomato;
@@ -245,6 +256,14 @@ main {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 32px;
   margin-top: 30px;
   margin-left: 15px;
@@ -260,6 +279,11 @@ main {
 
 .js-listItem {
   font-size: 12px;
+}
+@media screen and (min-width: 1200px) {
+  .js-listItem {
+    font-size: 20px;
+  }
 }
 
 .index-body-container {
@@ -306,7 +330,7 @@ main {
 .order-input {
   width: 285px;
   height: 40px;
-  padding-left: 15px;
+  padding-left: 40px;
   margin-left: 10px;
   margin-top: 10px;
   outline: none;

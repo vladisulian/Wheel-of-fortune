@@ -58,6 +58,10 @@ main {
   transition-property: opacity;
   transition-duration: 1050ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: 1200px) {
+    font-size: 35px;
+  }
 }
 
 .js-choosenItem {
@@ -110,6 +114,9 @@ main {
   width: 110px;
   height: 40px;
   margin: 30px;
+
+  cursor: pointer;
+
   /* padding: 5px; */
   background-color: transparent;
   border: 1px solid tomato;
@@ -159,6 +166,9 @@ main {
 #item-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   gap: 32px;
   margin-top: 30px;
   margin-left: 15px;
@@ -172,6 +182,9 @@ main {
 }
 .js-listItem {
   font-size: 12px;
+  @media screen and (min-width: 1200px) {
+    font-size: 20px;
+  }
 }
 .index-body-container {
   display: flex;
@@ -199,7 +212,7 @@ main {
   width: 285px;
   height: 40px;
 
-  padding-left: 15px;
+  padding-left: 40px;
   margin-left: 10px;
   margin-top: 10px;
 
