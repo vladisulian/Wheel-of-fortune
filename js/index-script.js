@@ -56,8 +56,26 @@ function onFormSubmit(event) {
     elements.newTitle.style.opacity = "1";
   }, 1500);
 
-  // !  make choosen item active
+  // !  make choosen item active and give index-linkBtn display block
   setTimeout(() => {
     elements.advertisement.style.opacity = "1";
+    elements.newOrderBtnLink.style.display = "block";
   }, 3200);
+  // ! make btn active
+  setTimeout(() => {
+    elements.newOrderBtnLink.style.opacity = "1";
+  }, 4000);
+  //!   change color of choosen game
+  setTimeout(() => {
+    const advertisement = document.querySelector(".js-choosenItem");
+    advertisement.style.color = "orangered";
+  }, 3700);
+  setTimeout(() => {
+    const advertisement = document.querySelector(".js-choosenItem");
+    advertisement.style.color = "blue";
+  }, 4300);
+  setTimeout(() => {
+    const advertisement = document.querySelector(".js-choosenItem");
+    advertisement.style.color = "orangered";
+  }, 4800);
 }

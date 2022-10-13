@@ -126,7 +126,7 @@ main {
   border: 1px solid transparent;
   border-radius: 10px;
   transition-property: border, border-radius, width, height;
-  transition-duration: 250ms;
+  transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-link-to-index:hover {
@@ -137,12 +137,12 @@ main {
 }
 .button-link-to-index a {
   color: white;
-  transition-property: font-size;
-  transition-duration: 250ms;
+  transition-property: font-size, opacity;
+  transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-link-to-index:hover a {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 /* - - - - - */
@@ -156,6 +156,7 @@ main {
   background-color: black;
 
   text-align: center;
+  user-select: none;
 }
 #main {
   transition-property: opacity;
