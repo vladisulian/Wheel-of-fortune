@@ -49,6 +49,7 @@ function onFormSubmit(event) {
   for (let i = 0; i < inputValue.split(",").length; i++) {
     const listItem = document.createElement("li");
     listItem.textContent = inputValue.split(",")[i];
+    listItem.classList.add("js-listItem");
     listItem.style.color = "orange";
 
     elements.list.append(listItem);

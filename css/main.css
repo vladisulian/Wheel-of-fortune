@@ -26,6 +26,7 @@ body {
 /* - - - - - */
 .container {
   width: 100%;
+  overflow: hidden;
 }
 @media screen and (min-width: 480px) {
   .container {
@@ -92,8 +93,7 @@ main {
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.js-gamesListItem,
-.js-new-title {
+.js-gamesListItem {
   font-family: "Alkalami", sans-serif;
   font-size: 42px;
   font-weight: 300;
@@ -106,7 +106,10 @@ main {
 }
 
 .js-new-title {
+  font-size: 22px;
   margin-bottom: 70px;
+  margin-left: 8px;
+  font-weight: 300;
   -webkit-transition-property: opacity;
   transition-property: opacity;
   -webkit-transition-duration: 1050ms;
@@ -117,7 +120,7 @@ main {
 
 .js-choosenItem {
   font-family: "Alkalami", sans-serif;
-  font-size: 120px;
+  font-size: 45px;
   margin-bottom: 75px;
   -webkit-transition-property: color, opacity;
   transition-property: color, opacity;
@@ -125,6 +128,11 @@ main {
           transition-duration: 1050ms;
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (min-width: 1200px) {
+  .js-choosenItem {
+    font-size: 120px;
+  }
 }
 
 /*! display none */
@@ -235,8 +243,11 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 32px;
   margin-top: 30px;
+  margin-left: 15px;
   margin-bottom: 30px;
   font-size: 28px;
   -webkit-transition-property: opacity;
@@ -245,6 +256,10 @@ main {
           transition-duration: 1050ms;
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.js-listItem {
+  font-size: 12px;
 }
 
 .index-body-container {

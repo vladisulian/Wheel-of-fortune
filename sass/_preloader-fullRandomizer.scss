@@ -41,8 +41,7 @@ main {
   transition-duration: 1050ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.js-gamesListItem,
-.js-new-title {
+.js-gamesListItem {
   font-family: "Alkalami", sans-serif;
   font-size: 42px;
   font-weight: 300;
@@ -52,7 +51,10 @@ main {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .js-new-title {
+  font-size: 22px;
   margin-bottom: 70px;
+  margin-left: 8px;
+  font-weight: 300;
   transition-property: opacity;
   transition-duration: 1050ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -60,13 +62,16 @@ main {
 
 .js-choosenItem {
   font-family: "Alkalami", sans-serif;
-  font-size: 120px;
-
+  font-size: 45px;
   margin-bottom: 75px;
 
   transition-property: color, opacity;
   transition-duration: 1050ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: 1200px) {
+    font-size: 120px;
+  }
 }
 
 /*! display none */
@@ -153,8 +158,10 @@ main {
 }
 #item-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 32px;
   margin-top: 30px;
+  margin-left: 15px;
   margin-bottom: 30px;
 
   font-size: 28px;
@@ -162,6 +169,9 @@ main {
   transition-property: opacity;
   transition-duration: 1050ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.js-listItem {
+  font-size: 12px;
 }
 .index-body-container {
   display: flex;
