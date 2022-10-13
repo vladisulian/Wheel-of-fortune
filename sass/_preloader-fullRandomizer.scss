@@ -1,21 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-ul {
-  list-style-type: none;
-}
-a {
-  text-decoration: none;
-}
-body {
-  font-family: "Alkalami", sans-serif;
-  color: blue;
-  background-color: black;
-
-  user-select: none;
-}
 .overlay-preloader {
   width: 100%;
   height: 100%;
@@ -27,18 +9,13 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   text-align: center;
-}
-.overlay-preloader p {
-  font-size: 125px;
-  color: white;
-  margin: 50px;
-}
-/* - - - - - */
-.container {
-  width: 100%;
-}
-/* - - - - - */
 
+  & p {
+    font-size: 125px;
+    color: white;
+    margin: 50px;
+  }
+}
 main {
   display: flex;
   flex-direction: column;
@@ -48,9 +25,9 @@ main {
 
 .title {
   margin-top: 25px;
-}
-.title span {
-  color: orangered;
+  & span {
+    color: orangered;
+  }
 }
 .js-itemList {
   display: flex;
@@ -108,21 +85,22 @@ main {
   transition-property: outline;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.button:hover {
-  outline: 2px solid rgb(189, 28, 28);
+
+  &:hover {
+    outline: 2px solid rgb(189, 28, 28);
+  }
+  & a {
+    color: transparent;
+    transition-property: color, padding;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &:hover a {
+    padding: 30px;
+    color: orangered;
+  }
 }
 
-.button a {
-  color: transparent;
-  transition-property: color, padding;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.button:hover a {
-  padding: 30px;
-  color: orangered;
-}
 .button-link-to-index {
   width: 110px;
   height: 40px;
@@ -134,27 +112,27 @@ main {
     background-color, opacity;
   transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.button-link-to-index:hover {
-  width: 150px;
-  height: 70px;
-  border-radius: 15px;
-  border: 2px solid white;
-  background-color: white;
-}
-.button-link-to-index a {
-  color: white;
-  transition-property: font-size, opacity, color;
-  transition-duration: 450ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
-  border: none;
-}
-.button-link-to-index:hover a {
-  color: black;
-  font-size: 22px;
-}
 
+  &:hover {
+    width: 150px;
+    height: 70px;
+    border-radius: 15px;
+    border: 2px solid white;
+    background-color: white;
+  }
+  & a {
+    color: white;
+    transition-property: font-size, opacity, color;
+    transition-duration: 450ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    border: none;
+  }
+  &:hover a {
+    color: black;
+    font-size: 22px;
+  }
+}
 /* - - - - - */
 .index-body {
   display: flex;
@@ -193,20 +171,27 @@ main {
 }
 .order-title {
   margin: 50px 0;
-  font-size: 25px;
+  font-size: 22px;
+  @media screen and (min-width: 768px) {
+    font-size: 25px;
+  }
 }
 .order-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.order-form label {
+  font-size: 20px;
+}
 
 .order-input {
-  width: 550px;
+  width: 285px;
   height: 40px;
 
   padding-left: 15px;
   margin-left: 10px;
+  margin-top: 10px;
 
   outline: none;
   border: none;
@@ -214,9 +199,13 @@ main {
   transition: border;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.order-input:hover {
-  border: 2px solid blueviolet;
+  @media screen and (min-width: 1200px) {
+    width: 550px;
+  }
+
+  &:hover {
+    border: 2px solid blueviolet;
+  }
 }
 .order-button-submit {
   font-family: "Alkalami", sans-serif;
@@ -237,8 +226,9 @@ main {
   transition-property: font-size, outline;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.order-button-submit:hover {
-  font-size: 20px;
-  outline: 2px solid tomato;
+
+  &:hover {
+    font-size: 20px;
+    outline: 2px solid tomato;
+  }
 }

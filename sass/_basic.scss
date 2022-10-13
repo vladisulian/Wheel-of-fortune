@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+body {
+  font-family: "Alkalami", sans-serif;
+  color: blue;
+  background-color: black;
+
+  user-select: none;
+}
+
+/* - - - - - */
+.container {
+  width: 100%;
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+}
+/* - - - - - */
