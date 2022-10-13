@@ -14,27 +14,38 @@
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
   <body class="index-body">
-    <p class="order-title">
-      Turn to the wheel of fortune and it will give you the answer
-    </p>
-    <form class="order-form">
-      <label>
-        Entered your item list with a coma
-        <input
-          type="text"
-          name="items"
-          class="order-input"
-          placeholder="First element, second element, third element"
-        />
-      </label>
-      <button type="submit" class="order-button-submit">Send</button>
-      <button>
-        <a href="/WheelofFortune.html" id="relocate"
-          >Link to Wheel of Fortune</a
-        >
+    <main id="main">
+      <p class="order-title">
+        Turn to the wheel of fortune and it will give you the answer
+      </p>
+      <form class="order-form">
+        <label>
+          Entered your item list with a coma
+          <input
+            type="text"
+            name="items"
+            class="order-input"
+            placeholder="First element, second element, third element"
+          />
+        </label>
+        <button type="submit" class="order-button-submit">Send</button>
+        <button>
+          <a href="/WheelofFortune.html" id="relocate"
+            >Link to Wheel of Fortune</a
+          >
+        </button>
+      </form>
+    </main>
+    <section class="randomizer-container">
+      <ul id="item-list"></ul>
+      <p class="js-new-title" style="opacity: 0">
+        Wheel of Fortune will give you...
+      </p>
+      <p class="js-choosenItem" style="opacity: 0"></p>
+      <button class="button">
+        <a href="/index.html">Make new order to Wheel of Fortune</a>
       </button>
-    </form>
-
+    </section>
     <script src="/js/index-script.js"></script>
   </body>
 </html>

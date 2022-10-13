@@ -157,6 +157,23 @@ main {
 
   text-align: center;
 }
+#main {
+  transition-property: opacity;
+  transition-duration: 1050ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+#item-list {
+  display: flex;
+  gap: 32px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  font-size: 28px;
+
+  transition-property: opacity;
+  transition-duration: 1050ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .index-body-container {
   display: flex;
   flex-direction: column;
