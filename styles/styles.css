@@ -125,7 +125,8 @@ main {
   /* padding: 5px; */
   background-color: transparent;
   border: 1px solid tomato;
-  transition-property: border, border-radius, width, height, font-size;
+  transition-property: border, border-radius, width, height, font-size,
+    background-color, opacity;
   transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -133,16 +134,19 @@ main {
   width: 150px;
   height: 70px;
   border-radius: 15px;
+  border: 2px solid white;
+  background-color: white;
 }
 .button-link-to-index a {
   color: white;
-  transition-property: font-size, opacity;
+  transition-property: font-size, opacity, color;
   transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
   border: none;
 }
 .button-link-to-index:hover a {
+  color: black;
   font-size: 22px;
 }
 
