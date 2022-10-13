@@ -1,3 +1,8 @@
+const formEls = {
+  
+}
+
+// - - - - -
 const items = [
   "First item",
   "Second item",
@@ -22,6 +27,11 @@ window.addEventListener("load", createItemList);
 function createItemList() {
   //! hide preloader
   elements.overlay.style.opacity = "0";
+
+  //! display: none to preloader
+  setTimeout(() => {
+    elements.overlay.style.display = "none";
+  }, 1000);
 
   //!   create items
   for (let i = 0; i < items.length; i++) {
