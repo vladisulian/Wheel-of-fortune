@@ -1,8 +1,3 @@
-const formEls = {
-  
-}
-
-// - - - - -
 const items = [
   "First item",
   "Second item",
