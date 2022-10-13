@@ -122,24 +122,25 @@ main {
   width: 110px;
   height: 40px;
   margin: 30px;
+  /* padding: 5px; */
   background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  transition-property: border, border-radius, width, height;
+  border: 1px solid tomato;
+  transition-property: border, border-radius, width, height, font-size;
   transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-link-to-index:hover {
   width: 150px;
   height: 70px;
-  border: 1px solid orange;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 .button-link-to-index a {
   color: white;
   transition-property: font-size, opacity;
   transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  border: none;
 }
 .button-link-to-index:hover a {
   font-size: 22px;

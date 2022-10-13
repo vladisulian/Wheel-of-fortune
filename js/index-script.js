@@ -59,11 +59,11 @@ function onFormSubmit(event) {
   // !  make choosen item active and give index-linkBtn display block
   setTimeout(() => {
     elements.advertisement.style.opacity = "1";
-    elements.newOrderBtnLink.style.display = "block";
+    elements.newOrderBtn.style.display = "inline-block";
   }, 3200);
   // ! make btn active
   setTimeout(() => {
-    elements.newOrderBtnLink.style.opacity = "1";
+    elements.newOrderBtn.style.opacity = "1";
   }, 4000);
   //!   change color of choosen game
   setTimeout(() => {
