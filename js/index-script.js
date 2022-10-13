@@ -8,6 +8,7 @@ const elements = {
   advertisement: document.querySelector(".js-choosenItem"),
   newOrderBtn: document.querySelector(".button-link-to-index"),
   newOrderBtnLink: document.querySelector("#index-link"),
+  input: document.querySelector(".order-input"),
 };
 
 //!  - - - - -    base properties
@@ -16,6 +17,11 @@ elements.list.style.opacity = "0";
 form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
+
+  if (elements.input.value === "") {
+    alert("You need to fill this fields");
+    return;
+  }
   formElement = event.currentTarget.elements;
   inputValue = formElement.items.value;
   console.log("FormElement", formElement);
