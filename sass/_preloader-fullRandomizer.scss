@@ -209,7 +209,8 @@ main {
 }
 
 .order-input {
-  width: 285px;
+  // width: 285px;
+  width: 80%;
   height: 40px;
 
   padding-left: 20px;
@@ -222,8 +223,11 @@ main {
   transition: border;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (min-width: 480px) and (max-width: 1199px) {
+    width: 95%;
+  }
   @media screen and (min-width: 1200px) {
-    width: 550px;
+    width: 100%;
   }
 
   &:hover {

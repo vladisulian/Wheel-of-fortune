@@ -28,9 +28,14 @@ body {
   width: 100%;
   overflow: hidden;
 }
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) and (max-width: 767px) {
   .container {
     width: 480px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    width: 768px;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -328,9 +333,9 @@ main {
 }
 
 .order-input {
-  width: 285px;
+  width: 80%;
   height: 40px;
-  padding-left: 40px;
+  padding-left: 20px;
   margin-left: 10px;
   margin-top: 10px;
   outline: none;
@@ -343,9 +348,14 @@ main {
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+@media screen and (min-width: 480px) and (max-width: 1199px) {
+  .order-input {
+    width: 95%;
+  }
+}
 @media screen and (min-width: 1200px) {
   .order-input {
-    width: 550px;
+    width: 100%;
   }
 }
 .order-input:hover {
