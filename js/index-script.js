@@ -24,16 +24,19 @@ function onFormSubmit(event) {
   }
   formElement = event.currentTarget.elements;
   inputValue = formElement.items.value;
-  console.log("FormElement", formElement);
-  console.log("InputValue replaced ','", inputValue.replace(/[\s,%]/g, " "));
-  console.log("InputValue splitted ','", inputValue.split(",")); //! Верный вариант
-  //   userItems.push(inputValue.split(","));
+
+  // test
+  // console.log("FormElement", formElement);
+  // console.log("InputValue replaced ','", inputValue.replace(/[\s,%]/g, " "));
+  // console.log("InputValue splitted ','", inputValue.split(","));
   //   console.log("UserItems pushed", userItems);
+  // - - - - -
+
   //! randomizer
   const randomItems = Math.floor(Math.random() * inputValue.split(",").length);
   const choosenItem = inputValue.split(",")[randomItems];
-  console.log("RandomItems:", randomItems);
-  console.log("ChoosenItem", choosenItem);
+  // console.log("RandomItems:", randomItems);
+  // console.log("ChoosenItem", choosenItem);
 
   //! make choosen item
   setTimeout(() => {
