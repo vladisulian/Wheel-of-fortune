@@ -45,8 +45,7 @@ function onFormSubmit(event) {
   //! unexpected symbols
   else if (
     elements.userItemInput.value.includes(";") ||
-    elements.userItemInput.value == "," ||
-    elements.userItemInput.value.includes(".")
+    elements.userItemInput.value == ","
   ) {
     alert("Unexpected symbols");
     return;
@@ -62,26 +61,25 @@ function onFormSubmit(event) {
   formElement = event.currentTarget.elements;
   inputValue = formElement.items.value;
   const userNewItems = inputValue.split(",");
-  const uniqueUserItems = userNewItems.filter(
+
+  let userItemsWithoutSpaces = userNewItems
+    .toString()
+    .replace(/(?<=,.+)\s+/g, "")
+    .split(",");
+  const uniqueUserItems = userItemsWithoutSpaces.filter(
     (items, index, array) => array.indexOf(items) === index
   );
 
-  console.log("Массив введённых пользователем элементов", userNewItems);
-  console.log("Массив уникальных элементов", uniqueUserItems);
-  console.log("Количество уникальных элементы", uniqueUserItems.length);
-  function withoutProbels(item) {
-    return uniqueUserItems.replace(/(?<=,.+)\s+/g, "");
-  }
+  console.log("Массив введённых пользователем элементов:", userNewItems);
   console.log(
-    "Массив уникальных элементов после удаления свободного места",
+    "Массив уникальных элементов после удаления свободного места:",
     uniqueUserItems
   );
+  console.log("Количество уникальных элементов:", uniqueUserItems.length);
 
   //! randomizer
   const randomItems = Math.floor(Math.random() * uniqueUserItems.length);
   const choosenItem = uniqueUserItems[randomItems];
-  // console.log("RandomItems:", randomItems);
-  // console.log("ChoosenItem", choosenItem);
 
   //! hide main
   elements.main.style.opacity = "0";
