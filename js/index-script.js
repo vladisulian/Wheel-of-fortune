@@ -8,6 +8,7 @@ const elements = {
   newOrderBtn: document.querySelector(".button-link-to-index"),
   newOrderBtnLink: document.querySelector("#index-link"),
   firstLabel: form.firstElementChild,
+  secondLabel: document.querySelector("#itemList-label"),
   nameInput: document.querySelector("input[name='name']"),
   userItemInput: document.querySelector("input[name='items']"),
 };
