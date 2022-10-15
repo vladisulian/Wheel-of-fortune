@@ -339,6 +339,8 @@ main {
   padding-left: 20px;
   margin: 15px 10px;
   border-radius: 10px;
+  background-color: black;
+  color: white;
   -webkit-transition: border, outline;
   transition: border, outline;
   -webkit-transition-duration: 250ms;
