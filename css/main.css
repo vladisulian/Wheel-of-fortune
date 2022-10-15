@@ -337,11 +337,9 @@ main {
   height: 40px;
   padding-left: 20px;
   margin: 15px 10px;
-  outline: none;
-  border: none;
   border-radius: 10px;
-  -webkit-transition: border;
-  transition: border;
+  -webkit-transition: border, outline;
+  transition: border, outline;
   -webkit-transition-duration: 250ms;
           transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -362,8 +360,23 @@ main {
     width: 1000px;
   }
 }
-.order-input:hover {
+
+.order-input-border {
+  outline: none;
+  border: none;
   border: 2px solid blueviolet;
+}
+
+.invalid {
+  outline: 1px solid tomato;
+}
+
+.valid {
+  outline: 1px solid greenyellow;
+}
+
+.process {
+  outline: 1px solid blue;
 }
 
 .order-button-submit {

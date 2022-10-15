@@ -11,18 +11,37 @@ const elements = {
   nameInput: document.querySelector("input[name='name']"),
   userItemInput: document.querySelector("input[name='items']"),
 };
-console.log(elements.firstLabel);
-
 //!  - - - - -    base properties
 elements.list.style.opacity = "0";
 //!  - - - - -    base properties
+
+form.addEventListener("input", onValidationCheck);
+function onValidationCheck() {
+  if (elements.userItemInput.value != "") {
+    elements.userItemInput.classList.remove("invalid");
+    elements.userItemInput.classList.add("process");
+    // console.log("Go to");
+  }
+}
 form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
-
+  // validation check
   if (elements.userItemInput.value === "") {
+    elements.userItemInput.classList.add("invalid");
+    // console.log("Invalid  ");
     alert("You need to fill this fields");
     return;
+  } else if (!elements.userItemInput.value.includes(",")) {
+    alert("You must enter at least 2 words separated by commas");
+    elements.userItemInput.classList.add("invalid");
+    elements.userItemInput.classList.remove("process");
+    return;
+  }
+  elements.userItemInput.classList.remove("process");
+  elements.userItemInput.classList.add("valid");
+  if (elements.nameInput.value != "") {
+    elements.nameInput.classList.add("valid");
   }
   formElement = event.currentTarget.elements;
   inputValue = formElement.items.value;
