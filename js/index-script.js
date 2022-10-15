@@ -24,12 +24,15 @@ function onValidationCheck() {
     // console.log("Go to");
   }
 }
+
 form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
+
   // validation check
   if (elements.userItemInput.value === "") {
     elements.userItemInput.classList.add("invalid");
+    elements.userItemInput.classList.remove("valid");
     // console.log("Invalid  ");
     alert("You need to fill this fields");
     return;
@@ -39,31 +42,46 @@ function onFormSubmit(event) {
     elements.userItemInput.classList.remove("process");
     return;
   }
+  //! unexpected symbols
+  else if (
+    elements.userItemInput.value.includes(";") ||
+    elements.userItemInput.value == "," ||
+    elements.userItemInput.value.includes(".")
+  ) {
+    alert("Unexpected symbols");
+    return;
+  }
   elements.userItemInput.classList.remove("process");
   elements.userItemInput.classList.add("valid");
+
+  // Title validation
   if (elements.nameInput.value != "") {
     elements.nameInput.classList.add("valid");
   }
+
   formElement = event.currentTarget.elements;
   inputValue = formElement.items.value;
+  const userNewItems = inputValue.split(",");
+  const uniqueUserItems = userNewItems.filter(
+    (items, index, array) => array.indexOf(items) === index
+  );
 
-  // test
-  // console.log("FormElement", formElement);
-  // console.log("InputValue replaced ','", inputValue.replace(/[\s,%]/g, " "));
-  // console.log("InputValue splitted ','", inputValue.split(","));
-  //   console.log("UserItems pushed", userItems);
-  // - - - - -
+  console.log("Массив введённых пользователем элементов", userNewItems);
+  console.log("Массив уникальных элементов", uniqueUserItems);
+  console.log("Количество уникальных элементы", uniqueUserItems.length);
+  function withoutProbels(item) {
+    return uniqueUserItems.replace(/(?<=,.+)\s+/g, "");
+  }
+  console.log(
+    "Массив уникальных элементов после удаления свободного места",
+    uniqueUserItems
+  );
 
   //! randomizer
-  const randomItems = Math.floor(Math.random() * inputValue.split(",").length);
-  const choosenItem = inputValue.split(",")[randomItems];
+  const randomItems = Math.floor(Math.random() * uniqueUserItems.length);
+  const choosenItem = uniqueUserItems[randomItems];
   // console.log("RandomItems:", randomItems);
   // console.log("ChoosenItem", choosenItem);
-
-  //! make choosen item
-  setTimeout(() => {
-    elements.advertisement.textContent = choosenItem;
-  }, 2700);
 
   //! hide main
   elements.main.style.opacity = "0";
@@ -71,14 +89,20 @@ function onFormSubmit(event) {
     elements.main.style.display = "none";
   }, 800);
   //! create items
-  for (let i = 0; i < inputValue.split(",").length; i++) {
-    const listItem = document.createElement("li");
-    listItem.textContent = inputValue.split(",")[i];
-    listItem.classList.add("js-listItem");
-    listItem.style.color = "orange";
+  if (uniqueUserItems.length >= 2) {
+    for (let i = 0; i < uniqueUserItems.length; i++) {
+      const listItem = document.createElement("li");
+      listItem.textContent = uniqueUserItems[i];
+      listItem.classList.add("js-listItem");
+      listItem.style.color = "orange";
 
-    elements.list.append(listItem);
+      elements.list.append(listItem);
+    }
+  } else {
+    alert("Please enter not same text");
+    location.reload();
   }
+
   //!   make item list active
   setTimeout(() => {
     elements.list.style.opacity = "1";
@@ -88,15 +112,22 @@ function onFormSubmit(event) {
     elements.newTitle.style.opacity = "1";
   }, 1500);
 
+  //! make choosen item
+  setTimeout(() => {
+    elements.advertisement.textContent = choosenItem;
+  }, 2700);
+
   // !  make choosen item active and give index-linkBtn display block
   setTimeout(() => {
     elements.advertisement.style.opacity = "1";
     elements.newOrderBtn.style.display = "inline-block";
   }, 3200);
+
   // ! make btn active
   setTimeout(() => {
     elements.newOrderBtn.style.opacity = "1";
   }, 4000);
+
   //!   change color of choosen game
   setTimeout(() => {
     const advertisement = document.querySelector(".js-choosenItem");
