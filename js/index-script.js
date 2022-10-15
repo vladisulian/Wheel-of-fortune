@@ -54,7 +54,7 @@ function onFormSubmit(event) {
   elements.userItemInput.classList.add("valid");
 
   // Title validation
-  if (elements.nameInput.value != "") {
+  if (elements.nameInput.value !== "") {
     elements.nameInput.classList.add("valid");
   }
 
@@ -62,23 +62,26 @@ function onFormSubmit(event) {
   inputValue = formElement.items.value;
   const userNewItems = inputValue.split(",");
 
-  let userItemsWithoutSpaces = userNewItems
-    .toString()
-    .replace(/(?<=,.+)\s+/g, "")
-    .split(",");
-  const uniqueUserItems = userItemsWithoutSpaces.filter(
+  // without whitespaces
+  // let userItemsWithoutSpaces = userNewItems
+  //   .toString()
+  //   .replace(/(?<=,.+)\s+/g, "")
+  //   .split(",");
+
+  // Удалённые пробелы
+  for (var i = 0; i < userNewItems.length; i++) {
+    userNewItems[i] = userNewItems[i].replace(/\s+/gim, "");
+  }
+  console.log("userNewItems без пробелов:", userNewItems);
+  const uniqueUserItems = userNewItems.filter(
     (items, index, array) => array.indexOf(items) === index
   );
-
-  console.log("Массив введённых пользователем элементов:", userNewItems);
-  console.log(
-    "Массив уникальных элементов после удаления свободного места:",
-    uniqueUserItems
-  );
+  // console.log("Массив введённых пользователем элементов:", userNewItems);
+  console.log("Массив уникальных элементов без пробелов:", uniqueUserItems);
   console.log("Количество уникальных элементов:", uniqueUserItems.length);
 
   //! randomizer
-  const randomItems = Math.floor(Math.random() * uniqueUserItems.length);
+  const randomItems = Math.floor(Math.random() * userNewItems.length);
   const choosenItem = uniqueUserItems[randomItems];
 
   //! hide main
