@@ -407,8 +407,14 @@ main {
 
 .burger {
   width: 100%;
-  margin-left: 70px;
+  margin-left: 90px;
   margin-bottom: 25px;
+}
+@media screen and (min-width: 768px) {
+  .burger {
+    margin-left: 200px;
+    margin-bottom: 10px;
+  }
 }
 @media screen and (min-width: 1200px) {
   .burger {
@@ -429,6 +435,11 @@ main {
 
 .faq-text-vanish {
   margin-left: 30%;
+}
+@media screen and (min-width: 768px) {
+  .faq-text-vanish {
+    margin-left: 11%;
+  }
 }
 
 .burger-stick-content {
@@ -453,17 +464,43 @@ main {
           transition-duration: 500ms;
   -webkit-transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
           transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
-  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.burger-common-geometry {
+  width: 30px;
+  height: 1px;
+}
+@media screen and (min-width: 768px) {
+  .burger-common-geometry {
+    height: 3px;
+  }
+}
+
+.burger-main-anim-geometry {
+  width: 250px;
+}
+
+.burger-main-anim-down-geometry {
+  height: 120px;
+}
+
+.burger-side-anim-geometry {
+  width: 0px;
+  height: 0;
 }
 
 .burger-list {
   position: absolute;
   top: 0;
   left: 25px;
+  padding-top: 10px;
   font-size: 12px;
   text-align: start;
   opacity: 0;
-  color: black;
+  color: greenyellow;
   -webkit-transition: opacity;
   transition: opacity;
   -webkit-transition-duration: 250ms;
@@ -474,24 +511,4 @@ main {
 
 .burger-list-active {
   opacity: 1;
-}
-
-.burger-common-geometry {
-  width: 30px;
-  height: 1px;
-}
-
-.burger-main-anim-geometry {
-  width: 250px;
-  border: 1px solid white;
-  border-radius: 10px;
-}
-
-.burger-main-anim-down-geometry {
-  height: 100px;
-}
-
-.burger-side-anim-geometry {
-  width: 0px;
-  height: 0;
 }/*# sourceMappingURL=main.css.map */

@@ -170,7 +170,7 @@ function onBurgerMenu() {
   if (burgerEl.mainStick.classList.contains("burger-main-anim-geometry")) {
     setTimeout(() => {
       burgerEl.burgerList.classList.add("burger-list-active");
-    }, 500);
+    }, 700);
   } else if (
     !burgerEl.mainStick.classList.contains("burger-main-anim-geometry")
   ) {
