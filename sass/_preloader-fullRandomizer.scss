@@ -214,8 +214,9 @@ main {
   height: 40px;
 
   padding-left: 20px;
-  margin-left: 10px;
-  margin-top: 10px;
+  // margin-left: 10px;
+  margin: 15px 10px;
+  // margin-top: 10px;
 
   outline: none;
   border: none;
@@ -223,11 +224,14 @@ main {
   transition: border;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  @media screen and (min-width: 480px) and (max-width: 1199px) {
-    width: 95%;
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    width: 400px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 600px;
   }
   @media screen and (min-width: 1200px) {
-    width: 100%;
+    width: 1000px;
   }
 
   &:hover {

@@ -336,8 +336,7 @@ main {
   width: 80%;
   height: 40px;
   padding-left: 20px;
-  margin-left: 10px;
-  margin-top: 10px;
+  margin: 15px 10px;
   outline: none;
   border: none;
   border-radius: 10px;
@@ -348,14 +347,19 @@ main {
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-@media screen and (min-width: 480px) and (max-width: 1199px) {
+@media screen and (min-width: 480px) and (max-width: 767px) {
   .order-input {
-    width: 95%;
+    width: 400px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .order-input {
+    width: 600px;
   }
 }
 @media screen and (min-width: 1200px) {
   .order-input {
-    width: 100%;
+    width: 1000px;
   }
 }
 .order-input:hover {

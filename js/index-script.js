@@ -1,5 +1,4 @@
 const form = document.querySelector(".order-form");
-const input = form[0];
 
 const elements = {
   main: document.querySelector("#main"),
@@ -8,8 +7,11 @@ const elements = {
   advertisement: document.querySelector(".js-choosenItem"),
   newOrderBtn: document.querySelector(".button-link-to-index"),
   newOrderBtnLink: document.querySelector("#index-link"),
-  input: document.querySelector(".order-input"),
+  firstLabel: form.firstElementChild,
+  nameInput: document.querySelector("input[name='name']"),
+  userItemInput: document.querySelector("input[name='items']"),
 };
+console.log(elements.firstLabel);
 
 //!  - - - - -    base properties
 elements.list.style.opacity = "0";
@@ -18,7 +20,7 @@ form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
 
-  if (elements.input.value === "") {
+  if (elements.userItemInput.value === "") {
     alert("You need to fill this fields");
     return;
   }
