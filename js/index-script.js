@@ -12,6 +12,15 @@ const elements = {
   nameInput: document.querySelector("input[name='name']"),
   userItemInput: document.querySelector("input[name='items']"),
 };
+const burgerEl = {
+  burgerContainer: document.querySelector(".burger-stick-content"),
+  mainStick: document.querySelector(".main-burger"),
+  firstSideStick: document.querySelectorAll(".side-burger")[0],
+  secondSideStick: document.querySelectorAll(".side-burger")[1],
+  faqText: document.querySelector(".faq-text"),
+  burgerList: document.querySelector(".burger-list"),
+};
+
 //!  - - - - -    base properties
 elements.list.style.opacity = "0";
 //!  - - - - -    base properties
@@ -142,4 +151,29 @@ function onFormSubmit(event) {
     const advertisement = document.querySelector(".js-choosenItem");
     advertisement.style.color = "orangered";
   }, 4800);
+}
+
+// - - - - -
+// burger
+burgerEl.burgerContainer.addEventListener("click", onBurgerMenu);
+function onBurgerMenu() {
+  burgerEl.mainStick.classList.toggle("burger-main-anim-geometry");
+  burgerEl.firstSideStick.classList.toggle("burger-side-anim-geometry");
+  burgerEl.secondSideStick.classList.toggle("burger-side-anim-geometry");
+  burgerEl.faqText.classList.toggle("faq-text-vanish");
+  // burger dropdown
+  setTimeout(() => {
+    burgerEl.mainStick.classList.toggle("burger-main-anim-down-geometry");
+  }, 400);
+
+  // FAQ text styles
+  if (burgerEl.mainStick.classList.contains("burger-main-anim-geometry")) {
+    setTimeout(() => {
+      burgerEl.burgerList.classList.add("burger-list-active");
+    }, 500);
+  } else if (
+    !burgerEl.mainStick.classList.contains("burger-main-anim-geometry")
+  ) {
+    burgerEl.burgerList.classList.remove("burger-list-active");
+  }
 }

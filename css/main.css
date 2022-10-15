@@ -233,6 +233,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-family: cursive, sans-serif;
   -webkit-user-select: auto;
      -moz-user-select: auto;
       -ms-user-select: auto;
@@ -402,4 +403,95 @@ main {
 .order-button-submit:hover {
   font-size: 20px;
   outline: 2px solid tomato;
+}
+
+.burger {
+  width: 100%;
+  margin-left: 70px;
+  margin-bottom: 25px;
+}
+@media screen and (min-width: 1200px) {
+  .burger {
+    display: none;
+  }
+}
+
+.faq-text {
+  position: absolute;
+  font-size: 12px;
+  -webkit-transition: opacity, margin-left;
+  transition: opacity, margin-left;
+  -webkit-transition-duration: 700ms;
+          transition-duration: 700ms;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+}
+
+.faq-text-vanish {
+  margin-left: 30%;
+}
+
+.burger-stick-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 4px;
+  margin-top: 25px;
+  width: 0;
+  background-color: white;
+}
+
+.burger-stick {
+  position: relative;
+  -webkit-transition: width, height, background-color, border, border-radius;
+  transition: width, height, background-color, border, border-radius;
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
+  -webkit-transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+          transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+  background-color: white;
+}
+
+.burger-list {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  font-size: 12px;
+  text-align: start;
+  opacity: 0;
+  color: black;
+  -webkit-transition: opacity;
+  transition: opacity;
+  -webkit-transition-duration: 250ms;
+          transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+          transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+}
+
+.burger-list-active {
+  opacity: 1;
+}
+
+.burger-common-geometry {
+  width: 30px;
+  height: 1px;
+}
+
+.burger-main-anim-geometry {
+  width: 250px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.burger-main-anim-down-geometry {
+  height: 100px;
+}
+
+.burger-side-anim-geometry {
+  width: 0px;
+  height: 0;
 }/*# sourceMappingURL=main.css.map */

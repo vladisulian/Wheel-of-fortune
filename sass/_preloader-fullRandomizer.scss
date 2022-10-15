@@ -151,6 +151,8 @@ main {
   flex-direction: column;
   align-items: center;
 
+  font-family: cursive, sans-serif;
+
   user-select: auto;
   color: yellowgreen;
   background-color: black;
@@ -269,4 +271,82 @@ main {
     font-size: 20px;
     outline: 2px solid tomato;
   }
+}
+
+// - - - - -
+.burger {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: flex-start;
+
+  width: 100%;
+
+  margin-left: 70px;
+  margin-bottom: 25px;
+
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
+}
+.faq-text {
+  position: absolute;
+  font-size: 12px;
+  transition: opacity, margin-left;
+  transition-duration: 700ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+}
+.faq-text-vanish {
+  margin-left: 30%;
+}
+.burger-stick-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 25px;
+
+  width: 0;
+  background-color: white;
+}
+.burger-stick {
+  position: relative;
+  transition: width, height, background-color, border, border-radius;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+
+  background-color: white;
+}
+.burger-list {
+  position: absolute;
+  top: 0;
+  left: 25px;
+
+  font-size: 12px;
+  text-align: start;
+
+  opacity: 0;
+
+  color: black;
+
+  transition: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+}
+.burger-list-active {
+  opacity: 1;
+}
+.burger-common-geometry {
+  width: 30px;
+  height: 1px;
+}
+.burger-main-anim-geometry {
+  width: 250px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.burger-main-anim-down-geometry {
+  height: 100px;
+}
+.burger-side-anim-geometry {
+  width: 0px;
+  height: 0;
 }
