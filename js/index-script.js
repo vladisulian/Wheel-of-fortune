@@ -71,21 +71,10 @@ function onFormSubmit(event) {
     elements.userItemInput.classList.remove("process");
     // alert("You must  enter at least 2 words separated by commas");
     return;
-  } else if (elements.userItemInput.value.includes("-")) {
-    elements.userItemInput.classList.remove("process");
-    elements.userItemInput.classList.remove("invalid");
-    elements.userItemInput.classList.add("valid");
-  } else if (
-    elements.userItemInput.value.includes("") ||
-    elements.nameInput.value.includes("")
-  ) {
-    elements.userItemInput.classList.add("invalid");
-    buttonInvalid();
-    onBurgerRemoveAllRules();
-    onBurgerfourthRuleUnderline();
-    console.log("Delete spaces");
-    return;
   }
+  elements.userItemInput.classList.remove("process");
+  elements.userItemInput.classList.remove("invalid");
+  elements.userItemInput.classList.add("valid");
 
   function titleValidation() {
     // Title validation
