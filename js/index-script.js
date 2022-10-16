@@ -34,17 +34,12 @@ elements.list.style.opacity = "0";
 
 form.addEventListener("input", onValidationCheck);
 function onValidationCheck() {
-  // if (elements.userItemInput.value != "") {
-  //   elements.userItemInput.classList.remove("invalid");
-  //   elements.userItemInput.classList.add("process");
-  //   // console.log("Go to");
-  // } else
   if (elements.userItemInput.value == "") {
     elements.userItemInput.classList.remove("process");
     elements.userItemInput.classList.remove("valid");
   }
 }
-
+// function validationCheck() {}
 form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   onRulesBeforeSubmitCheck();
@@ -56,22 +51,17 @@ function onFormSubmit(event) {
     elements.userItemInput.classList.add("invalid");
     elements.userItemInput.classList.remove("valid");
     rules.secondRule.classList.add("burger-rules-invalid");
-    alert("You need to fill this fields");
     return;
   } else if (!elements.userItemInput.value.includes(",")) {
-    onBurgerMenujustShow();
-    rules.thirdRule.classList.add("burger-rules-invalid");
+    onBurgerThirdRuleUnderline();
     elements.userItemInput.classList.add("invalid");
     elements.userItemInput.classList.remove("process");
     // alert("You must  enter at least 2 words separated by commas");
     return;
   }
   //! unexpected symbols
-  else if (
-    elements.userItemInput.value.includes(";") ||
-    elements.userItemInput.value == ","
-  ) {
-    alert("Unexpected symbols");
+  else if (elements.userItemInput.value.includes(";")) {
+    onBurgerThirdRuleUnderline();
     return;
   }
   elements.userItemInput.classList.remove("process");
@@ -91,13 +81,10 @@ function onFormSubmit(event) {
   for (var i = 0; i < userNewItems.length; i++) {
     userNewItems[i] = userNewItems[i].replace(/\s+/gim, "");
   }
-  // console.log("userNewItems без пробелов:", userNewItems);
+
   const uniqueUserItems = userNewItems.filter(
     (items, index, array) => array.indexOf(items) === index
   );
-  // console.log("Массив введённых пользователем элементов:", userNewItems);
-  // console.log("Массив уникальных элементов без пробелов:", uniqueUserItems);
-  // console.log("Количество уникальных элементов:", uniqueUserItems.length);
 
   //! randomizer
   const randomItems = Math.floor(Math.random() * userNewItems.length);
