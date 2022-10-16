@@ -12,14 +12,6 @@ const elements = {
   nameInput: document.querySelector("input[name='name']"),
   userItemInput: document.querySelector("input[name='items']"),
 };
-const burgerEl = {
-  burgerContainer: document.querySelector(".burger-stick-content"),
-  mainStick: document.querySelector(".main-burger"),
-  firstSideStick: document.querySelectorAll(".side-burger")[0],
-  secondSideStick: document.querySelectorAll(".side-burger")[1],
-  faqText: document.querySelector(".faq-text"),
-  burgerList: document.querySelector(".burger-list"),
-};
 
 //!  - - - - -    base properties
 elements.list.style.opacity = "0";
@@ -155,8 +147,19 @@ function onFormSubmit(event) {
 
 // - - - - -
 // burger
+const burgerEl = {
+  mainBurgerContainer: document.querySelector(".burger"),
+  burgerContainer: document.querySelector(".burger-stick-content"),
+  mainStick: document.querySelector(".main-burger"),
+  firstSideStick: document.querySelectorAll(".side-burger")[0],
+  secondSideStick: document.querySelectorAll(".side-burger")[1],
+  faqText: document.querySelector(".faq-text"),
+  burgerList: document.querySelector(".burger-list"),
+};
+
 burgerEl.burgerContainer.addEventListener("click", onBurgerMenu);
 function onBurgerMenu() {
+  burgerEl.mainBurgerContainer.classList.toggle("burger-animation");
   burgerEl.mainStick.classList.toggle("burger-main-anim-geometry");
   burgerEl.firstSideStick.classList.toggle("burger-side-anim-geometry");
   burgerEl.secondSideStick.classList.toggle("burger-side-anim-geometry");

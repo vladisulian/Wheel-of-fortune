@@ -411,6 +411,12 @@ main {
   width: 100%;
   margin-left: 90px;
   margin-bottom: 25px;
+  -webkit-transition: margin-left;
+  transition: margin-left;
+  -webkit-transition-duration: 700ms;
+          transition-duration: 700ms;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
 }
 @media screen and (min-width: 768px) {
   .burger {
@@ -421,6 +427,12 @@ main {
 @media screen and (min-width: 1200px) {
   .burger {
     display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .burger-animation {
+    margin-left: 67%;
   }
 }
 
@@ -438,9 +450,29 @@ main {
 .faq-text-vanish {
   margin-left: 30%;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 400px) and (max-width: 479px) {
+  .faq-text-vanish {
+    margin-left: 25%;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .faq-text-vanish {
+    margin-left: 20%;
+  }
+}
+@media screen and (min-width: 580px) and (max-width: 767px) {
+  .faq-text-vanish {
+    margin-left: 16%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 999px) {
   .faq-text-vanish {
     margin-left: 11%;
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+  .faq-text-vanish {
+    margin-left: 9%;
   }
 }
 

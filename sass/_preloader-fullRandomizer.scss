@@ -151,7 +151,7 @@ main {
   flex-direction: column;
   align-items: center;
 
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 
   user-select: auto;
   color: yellowgreen;
@@ -279,13 +279,13 @@ main {
 
 // - - - - -
 .burger {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: flex-start;
-
   width: 100%;
   margin-left: 90px;
   margin-bottom: 25px;
+
+  transition: margin-left;
+  transition-duration: 700ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.4, 1);
 
   @media screen and (min-width: 768px) {
     margin-left: 200px;
@@ -293,6 +293,11 @@ main {
   }
   @media screen and (min-width: 1200px) {
     display: none;
+  }
+}
+.burger-animation {
+  @media (min-width: 768px) {
+    margin-left: 67%;
   }
 }
 .faq-text {
@@ -305,8 +310,21 @@ main {
 .faq-text-vanish {
   margin-left: 30%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 400px) and (max-width: 479px) {
+    margin-left: 25%;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    margin-left: 20%;
+  }
+  @media screen and (min-width: 580px) and (max-width: 767px) {
+    margin-left: 16%;
+  }
+  @media screen and (min-width: 768px) and (max-width: 999px) {
     margin-left: 11%;
+  }
+  @media screen and (min-width: 1000px) and (max-width: 1200px) {
+    margin-left: 9%;
   }
 }
 .burger-stick-content {
