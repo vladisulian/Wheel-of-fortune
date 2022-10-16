@@ -28,24 +28,18 @@ const rules = {
   lastRule: document.querySelectorAll(".burger-rules")[3],
 };
 
-//!  - - - - -    base properties
+//!  -   base properties
 elements.list.style.opacity = "0";
-//!  - - - - -    base properties
+//!  -   base properties
 
-form.addEventListener("input", onValidationCheck);
-function onValidationCheck() {
+form.addEventListener("input", onValidationInputCheck);
+function onValidationInputCheck() {
   if (elements.userItemInput.value == "") {
     elements.userItemInput.classList.remove("process");
     elements.userItemInput.classList.remove("valid");
   }
 }
-// function validationCheck() {}
-form.addEventListener("submit", onFormSubmit);
-function onFormSubmit(event) {
-  onRulesBeforeSubmitCheck();
-  event.preventDefault();
-
-  // validation check
+function validationCheck() {
   if (elements.userItemInput.value === "") {
     onBurgerAllRulesUnderline();
     elements.userItemInput.classList.add("invalid");
@@ -58,30 +52,55 @@ function onFormSubmit(event) {
     elements.userItemInput.classList.remove("process");
     // alert("You must  enter at least 2 words separated by commas");
     return;
-  }
-  //! unexpected symbols
-  else if (elements.userItemInput.value.includes(";")) {
+  } else if (elements.userItemInput.value.includes(";")) {
     onBurgerThirdRuleUnderline();
     return;
   }
-  elements.userItemInput.classList.remove("process");
-  elements.userItemInput.classList.add("valid");
-
+}
+function titleValidation() {
   // Title validation
   if (elements.nameInput.value !== "") {
     elements.nameInput.classList.add("valid");
   }
+}
+function onRulesBeforeSubmitCheck() {
+  if (
+    elements.userItemInput.value !== "" ||
+    !elements.userItemInput.value.includes(";")
+  ) {
+    onBurgerRemoveSecondRule();
+    onBurgerRemoveThirdRule();
+    onBurgerRemoveLastRule();
+
+    onBurgerMenujustHide();
+  }
+}
+
+form.addEventListener("submit", onFormSubmit);
+function onFormSubmit(event) {
+  onRulesBeforeSubmitCheck();
+  event.preventDefault();
+
+  // validation check
+  validationCheck();
+  elements.userItemInput.classList.remove("process");
+  elements.userItemInput.classList.add("valid");
+  titleValidation();
 
   //! here is input value with items
   formElement = event.currentTarget.elements;
   inputValue = formElement.items.value;
   const userNewItems = inputValue.split(",");
 
-  //! Удалённые пробелы
-  for (var i = 0; i < userNewItems.length; i++) {
-    userNewItems[i] = userNewItems[i].replace(/\s+/gim, "");
+  function deleteWhiteSpaces() {
+    //! Удалённые пробелы
+    for (var i = 0; i < userNewItems.length; i++) {
+      userNewItems[i] = userNewItems[i].replace(/\s+/gim, "");
+    }
   }
+  deleteWhiteSpaces();
 
+  // unique elements
   const uniqueUserItems = userNewItems.filter(
     (items, index, array) => array.indexOf(items) === index
   );
@@ -89,9 +108,9 @@ function onFormSubmit(event) {
   //! randomizer
   const randomItems = Math.floor(Math.random() * userNewItems.length);
   const choosenItem = uniqueUserItems[randomItems];
-
   // !
-  // тест на пустые места
+
+  // whitespaces test
   function checkArray(uniqueUserItems) {
     for (var i = 0; i < uniqueUserItems.length; i++) {
       if (uniqueUserItems[i] === "") return false;
@@ -99,91 +118,81 @@ function onFormSubmit(event) {
       onBurgerLastRuleUnderline();
     }
   }
-  const checkedArray = checkArray(uniqueUserItems);
   // !
   //? empty places validation, create items
-  if (checkArray(uniqueUserItems) === false) {
-    elements.userItemInput.classList.remove("process");
-    elements.userItemInput.classList.remove("valid");
-    elements.userItemInput.classList.add("invalid");
+  function emptyPlacesValidationandCreateItems() {
+    if (checkArray(uniqueUserItems) === false) {
+      elements.userItemInput.classList.remove("process");
+      elements.userItemInput.classList.remove("valid");
+      elements.userItemInput.classList.add("invalid");
 
-    return;
-    //
-  } else {
-    onBurgerRemoveSecondRule();
-    onBurgerRemoveLastRule();
-
-    //! create items
-    for (let i = 0; i < uniqueUserItems.length; i++) {
-      const listItem = document.createElement("li");
-      listItem.textContent = uniqueUserItems[i];
-      listItem.classList.add("js-listItem");
-      listItem.style.color = "orange";
-
-      elements.list.append(listItem);
-    }
-  }
-  //! hide main
-  elements.main.style.opacity = "0";
-  setTimeout(() => {
-    elements.main.style.display = "none";
-  }, 800);
-
-  //!   make item list active
-  setTimeout(() => {
-    elements.list.style.opacity = "1";
-  }, 700);
-  //!   make "he will give you..." active
-  setTimeout(() => {
-    elements.newTitle.style.opacity = "1";
-  }, 1500);
-
-  //! make choosen item
-  setTimeout(() => {
-    elements.advertisement.textContent = choosenItem;
-  }, 2700);
-
-  // !  make choosen item active and give index-linkBtn display block
-  setTimeout(() => {
-    elements.advertisement.style.opacity = "1";
-    elements.newOrderBtn.style.display = "inline-block";
-  }, 3200);
-
-  // ! make btn active
-  setTimeout(() => {
-    elements.newOrderBtn.style.opacity = "1";
-  }, 4000);
-
-  //!   change color of choosen game
-  setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenItem");
-    advertisement.style.color = "orangered";
-  }, 3700);
-  setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenItem");
-    advertisement.style.color = "blue";
-  }, 4300);
-  setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenItem");
-    advertisement.style.color = "orangered";
-  }, 4800);
-  // - - - - -
-  // Rules check
-  function onRulesBeforeSubmitCheck() {
-    if (
-      elements.userItemInput.value !== "" ||
-      !elements.userItemInput.value.includes(";")
-    ) {
+      return;
+      //
+    } else {
       onBurgerRemoveSecondRule();
-      onBurgerRemoveThirdRule();
       onBurgerRemoveLastRule();
 
-      setTimeout(onBurgerMenyjustHide(), 150);
+      //! create items
+      for (let i = 0; i < uniqueUserItems.length; i++) {
+        const listItem = document.createElement("li");
+        listItem.textContent = uniqueUserItems[i];
+        listItem.classList.add("js-listItem");
+        listItem.style.color = "orange";
+
+        elements.list.append(listItem);
+      }
     }
   }
+  emptyPlacesValidationandCreateItems();
+  function otherDecoration() {
+    //! hide main
+    elements.main.style.opacity = "0";
+    setTimeout(() => {
+      elements.main.style.display = "none";
+    }, 800);
+
+    //!   make item list active
+    setTimeout(() => {
+      elements.list.style.opacity = "1";
+    }, 700);
+    //!   make "he will give you..." active
+    setTimeout(() => {
+      elements.newTitle.style.opacity = "1";
+    }, 1500);
+
+    //! make choosen item
+    setTimeout(() => {
+      elements.advertisement.textContent = choosenItem;
+    }, 2700);
+
+    // !  make choosen item active and give index-linkBtn display block
+    setTimeout(() => {
+      elements.advertisement.style.opacity = "1";
+      elements.newOrderBtn.style.display = "inline-block";
+    }, 3200);
+
+    // ! make btn active
+    setTimeout(() => {
+      elements.newOrderBtn.style.opacity = "1";
+    }, 4000);
+
+    //!   change color of choosen game
+    setTimeout(() => {
+      const advertisement = document.querySelector(".js-choosenItem");
+      advertisement.style.color = "orangered";
+    }, 3700);
+    setTimeout(() => {
+      const advertisement = document.querySelector(".js-choosenItem");
+      advertisement.style.color = "blue";
+    }, 4300);
+    setTimeout(() => {
+      const advertisement = document.querySelector(".js-choosenItem");
+      advertisement.style.color = "orangered";
+    }, 4800);
+  }
+  otherDecoration();
 }
 
-// - - - - -
 // burger
 
 burgerEl.burgerContainer.addEventListener("click", onBurgerMenu);
@@ -223,19 +232,18 @@ function onBurgerMenujustShow() {
     burgerEl.burgerList.classList.add("burger-list-active");
   }, 700);
 }
-function onBurgerMenyjustHide() {
-  burgerEl.burgerList.classList.add("burger-list-active");
+function onBurgerMenujustHide() {
+  burgerEl.burgerList.classList.remove("burger-list-active");
+
+  burgerEl.mainStick.classList.remove("burger-main-anim-down-geometry");
 
   setTimeout(() => {
-    burgerEl.mainStick.classList.add("burger-main-anim-down-geometry");
-  }, 400);
-  setTimeout(() => {
-    burgerEl.mainBurgerContainer.classList.add("burger-animation");
-    burgerEl.mainStick.classList.add("burger-main-anim-geometry");
-    burgerEl.firstSideStick.classList.add("burger-side-anim-geometry");
-    burgerEl.secondSideStick.classList.add("burger-side-anim-geometry");
-    burgerEl.faqText.classList.add("faq-text-vanish");
-  }, 700);
+    burgerEl.mainBurgerContainer.classList.remove("burger-animation");
+    burgerEl.mainStick.classList.remove("burger-main-anim-geometry");
+    burgerEl.firstSideStick.classList.remove("burger-side-anim-geometry");
+    burgerEl.secondSideStick.classList.remove("burger-side-anim-geometry");
+    burgerEl.faqText.classList.remove("faq-text-vanish");
+  }, 300);
 }
 // Rule's underline
 function onBurgerAllRulesUnderline() {
