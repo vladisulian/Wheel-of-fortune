@@ -26,7 +26,8 @@ const rules = {
   firstRule: document.querySelectorAll(".burger-rules")[0],
   secondRule: document.querySelectorAll(".burger-rules")[1],
   thirdRule: document.querySelectorAll(".burger-rules")[2],
-  lastRule: document.querySelectorAll(".burger-rules")[3],
+  fourthRule: document.querySelectorAll(".burger-rules")[3],
+  lastRule: document.querySelectorAll(".burger-rules")[4],
 };
 
 //!  - - - - -    base properties
@@ -80,7 +81,6 @@ function onFormSubmit(event) {
   formElement = event.currentTarget.elements;
   nameofListValue = formElement.name.value;
   inputValue = formElement.items.value;
-  console.log("nameofListValue:", nameofListValue);
   const userNewItems = inputValue.split(",");
 
   //! Удалённые пробелы
@@ -102,7 +102,8 @@ function onFormSubmit(event) {
     for (var i = 0; i < uniqueUserItems.length; i++) {
       if (uniqueUserItems[i] === "") return false;
       onBurgerSecondRuleUnderline();
-      onBurgerLastRuleUnderline();
+      onBurgerfourthRuleUnderline();
+      onBurgerLastRuleUnderline;
     }
   }
 
@@ -116,7 +117,7 @@ function onFormSubmit(event) {
     //
   } else {
     onBurgerRemoveSecondRule();
-    onBurgerRemoveLastRule();
+    onBurgerRemovefourthRule();
     elements.nameOfList.textContent = nameofListValue;
 
     //! create items
@@ -129,67 +130,68 @@ function onFormSubmit(event) {
       elements.list.append(listItem);
     }
   }
+  // Rules check
+  function onRulesBeforeSubmitCheck() {
+    if (
+      elements.userItemInput.value !== "" ||
+      !elements.userItemInput.value.includes(";")
+    ) {
+      onBurgerRemoveAllRules();
 
-  //! hide main
-  elements.main.style.opacity = "0";
-  setTimeout(() => {
-    elements.main.style.display = "none";
-  }, 800);
-
-  //!   make item name and item list active
-  setTimeout(() => {
-    elements.nameOfList.style.opacity = "1";
-
-    elements.list.style.opacity = "1";
-  }, 700);
-  //!   make "he will give you..." active
-  setTimeout(() => {
-    elements.newTitle.style.opacity = "1";
-  }, 1500);
-
-  //! make choosen item
-  setTimeout(() => {
-    elements.advertisement.textContent = choosenItem;
-  }, 2700);
-
-  // !  make choosen item active and give index-linkBtn display block
-  setTimeout(() => {
-    elements.advertisement.style.opacity = "1";
-    elements.newOrderBtn.style.display = "inline-block";
-  }, 3200);
-
-  // ! make btn active
-  setTimeout(() => {
-    elements.newOrderBtn.style.opacity = "1";
-  }, 4000);
-
-  //!   change color of choosen game
-  setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenItem");
-    advertisement.style.color = "orangered";
-  }, 3700);
-  setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenItem");
-    advertisement.style.color = "blue";
-  }, 4300);
-  setTimeout(() => {
-    const advertisement = document.querySelector(".js-choosenItem");
-    advertisement.style.color = "orangered";
-  }, 4800);
-}
-
-// Rules check
-function onRulesBeforeSubmitCheck() {
-  if (
-    elements.userItemInput.value !== "" ||
-    !elements.userItemInput.value.includes(";")
-  ) {
-    onBurgerRemoveSecondRule();
-    onBurgerRemoveThirdRule();
-    onBurgerRemoveLastRule();
-
-    onBurgerMenujustHide();
+      onBurgerMenujustHide();
+    }
   }
+  onRulesBeforeSubmitCheck();
+
+  function decoration() {
+    //! hide main
+    elements.main.style.opacity = "0";
+    setTimeout(() => {
+      elements.main.style.display = "none";
+    }, 800);
+
+    //!   make item name and item list active
+    setTimeout(() => {
+      elements.nameOfList.style.opacity = "1";
+
+      elements.list.style.opacity = "1";
+    }, 700);
+    //!   make "he will give you..." active
+    setTimeout(() => {
+      elements.newTitle.style.opacity = "1";
+    }, 1500);
+
+    //! make choosen item
+    setTimeout(() => {
+      elements.advertisement.textContent = choosenItem;
+    }, 2700);
+
+    // !  make choosen item active and give index-linkBtn display block
+    setTimeout(() => {
+      elements.advertisement.style.opacity = "1";
+      elements.newOrderBtn.style.display = "inline-block";
+    }, 3200);
+
+    // ! make btn active
+    setTimeout(() => {
+      elements.newOrderBtn.style.opacity = "1";
+    }, 4000);
+
+    //!   change color of choosen game
+    setTimeout(() => {
+      const advertisement = document.querySelector(".js-choosenItem");
+      advertisement.style.color = "orangered";
+    }, 3700);
+    setTimeout(() => {
+      const advertisement = document.querySelector(".js-choosenItem");
+      advertisement.style.color = "blue";
+    }, 4300);
+    setTimeout(() => {
+      const advertisement = document.querySelector(".js-choosenItem");
+      advertisement.style.color = "orangered";
+    }, 4800);
+  }
+  decoration();
 }
 
 // burger
@@ -249,6 +251,7 @@ function onBurgerAllRulesUnderline() {
   onBurgerMenujustShow();
   onBurgerSecondRuleUnderline();
   onBurgerThirdRuleUnderline();
+  onBurgerfourthRuleUnderline();
   onBurgerLastRuleUnderline();
 }
 function onBurgerSecondRuleUnderline() {
@@ -259,16 +262,29 @@ function onBurgerThirdRuleUnderline() {
   onBurgerMenujustShow();
   rules.thirdRule.classList.add("burger-rules-invalid");
 }
+function onBurgerfourthRuleUnderline() {
+  onBurgerMenujustShow();
+  rules.fourthRule.classList.add("burger-rules-invalid");
+}
 function onBurgerLastRuleUnderline() {
   onBurgerMenujustShow();
   rules.lastRule.classList.add("burger-rules-invalid");
 }
 // Remove function's
+function onBurgerRemoveAllRules() {
+  onBurgerRemoveSecondRule();
+  onBurgerRemoveThirdRule();
+  onBurgerRemovefourthRule();
+  onBurgerRemoveLastRule();
+}
 function onBurgerRemoveSecondRule() {
   rules.secondRule.classList.remove("burger-rules-invalid");
 }
 function onBurgerRemoveThirdRule() {
   rules.thirdRule.classList.remove("burger-rules-invalid");
+}
+function onBurgerRemovefourthRule() {
+  rules.fourthRule.classList.remove("burger-rules-invalid");
 }
 function onBurgerRemoveLastRule() {
   rules.lastRule.classList.remove("burger-rules-invalid");

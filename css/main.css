@@ -434,15 +434,15 @@ main {
     margin-bottom: 10px;
   }
 }
-@media screen and (min-width: 1200px) {
-  .burger {
-    display: none;
-  }
-}
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .burger-animation {
     margin-left: 67%;
+  }
+}
+@media (min-width: 1200px) {
+  .burger-animation {
+    margin-left: 79%;
   }
 }
 
@@ -481,7 +481,12 @@ main {
     margin-left: 11%;
   }
 }
-@media screen and (min-width: 1000px) and (max-width: 1200px) {
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+  .faq-text-vanish {
+    margin-left: 9%;
+  }
+}
+@media (min-width: 1200px) {
   .faq-text-vanish {
     margin-left: 9%;
   }
@@ -531,9 +536,19 @@ main {
 .burger-main-anim-geometry {
   width: 250px;
 }
+@media (min-width: 1200px) {
+  .burger-main-anim-geometry {
+    width: 315px;
+  }
+}
 
 .burger-main-anim-down-geometry {
   height: 95px;
+}
+@media (min-width: 1200px) {
+  .burger-main-anim-down-geometry {
+    height: 125px;
+  }
 }
 
 .burger-side-anim-geometry {
@@ -556,6 +571,11 @@ main {
           transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
           transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+}
+@media (min-width: 1200px) {
+  .burger-list {
+    font-size: 16px;
+  }
 }
 
 .burger-list-active {
