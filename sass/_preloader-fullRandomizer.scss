@@ -165,6 +165,13 @@ main {
   transition-duration: 1050ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+.name-of-list {
+  margin-top: 25px;
+  font-size: 25px;
+  transition-property: opacity;
+  transition-duration: 1050ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 #item-list {
   display: flex;
   flex-wrap: wrap;

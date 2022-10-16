@@ -256,6 +256,17 @@ main {
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.name-of-list {
+  margin-top: 25px;
+  font-size: 25px;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 1050ms;
+          transition-duration: 1050ms;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 #item-list {
   display: -webkit-box;
   display: -ms-flexbox;

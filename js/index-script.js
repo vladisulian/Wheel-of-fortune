@@ -3,6 +3,7 @@ const form = document.querySelector(".order-form");
 const elements = {
   main: document.querySelector("#main"),
   list: document.querySelector("#item-list"),
+  nameOfList: document.querySelector(".name-of-list"),
   newTitle: document.querySelector(".js-new-title"),
   advertisement: document.querySelector(".js-choosenItem"),
   newOrderBtn: document.querySelector(".button-link-to-index"),
@@ -77,7 +78,9 @@ function onFormSubmit(event) {
 
   //! here is input value with items
   formElement = event.currentTarget.elements;
+  nameofListValue = formElement.name.value;
   inputValue = formElement.items.value;
+  console.log("nameofListValue:", nameofListValue);
   const userNewItems = inputValue.split(",");
 
   //! Удалённые пробелы
@@ -108,13 +111,13 @@ function onFormSubmit(event) {
     elements.userItemInput.classList.remove("process");
     elements.userItemInput.classList.remove("valid");
     elements.userItemInput.classList.add("invalid");
-    console.log("Не прошёл проверку");
-
+    // console.log("Не прошёл проверку");
     return;
     //
   } else {
     onBurgerRemoveSecondRule();
     onBurgerRemoveLastRule();
+    elements.nameOfList.textContent = nameofListValue;
 
     //! create items
     for (let i = 0; i < uniqueUserItems.length; i++) {
@@ -133,8 +136,10 @@ function onFormSubmit(event) {
     elements.main.style.display = "none";
   }, 800);
 
-  //!   make item list active
+  //!   make item name and item list active
   setTimeout(() => {
+    elements.nameOfList.style.opacity = "1";
+
     elements.list.style.opacity = "1";
   }, 700);
   //!   make "he will give you..." active
