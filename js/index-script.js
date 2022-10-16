@@ -28,9 +28,9 @@ const rules = {
   lastRule: document.querySelectorAll(".burger-rules")[3],
 };
 
-//!  -   base properties
+//!  - - - - -    base properties
 elements.list.style.opacity = "0";
-//!  -   base properties
+//!  - - - - -    base properties
 
 form.addEventListener("input", onValidationInputCheck);
 function onValidationInputCheck() {
@@ -39,12 +39,19 @@ function onValidationInputCheck() {
     elements.userItemInput.classList.remove("valid");
   }
 }
-function validationCheck() {
+
+form.addEventListener("submit", onFormSubmit);
+function onFormSubmit(event) {
+  event.preventDefault();
+
+  // validation check
+
   if (elements.userItemInput.value === "") {
     onBurgerAllRulesUnderline();
     elements.userItemInput.classList.add("invalid");
     elements.userItemInput.classList.remove("valid");
     rules.secondRule.classList.add("burger-rules-invalid");
+    // alert("invalid");
     return;
   } else if (!elements.userItemInput.value.includes(",")) {
     onBurgerThirdRuleUnderline();
@@ -56,13 +63,117 @@ function validationCheck() {
     onBurgerThirdRuleUnderline();
     return;
   }
-}
-function titleValidation() {
-  // Title validation
-  if (elements.nameInput.value !== "") {
-    elements.nameInput.classList.add("valid");
+
+  elements.userItemInput.classList.remove("process");
+  elements.userItemInput.classList.add("valid");
+
+  function titleValidation() {
+    // Title validation
+    if (elements.nameInput.value !== "") {
+      elements.nameInput.classList.add("valid");
+    }
   }
+  titleValidation();
+
+  //! here is input value with items
+  formElement = event.currentTarget.elements;
+  inputValue = formElement.items.value;
+  const userNewItems = inputValue.split(",");
+
+  //! Удалённые пробелы
+  for (var i = 0; i < userNewItems.length; i++) {
+    userNewItems[i] = userNewItems[i].replace(/\s+/gim, "");
+  }
+
+  // unique elements
+  const uniqueUserItems = userNewItems.filter(
+    (items, index, array) => array.indexOf(items) === index
+  );
+
+  // randomizer
+  const randomItems = Math.floor(Math.random() * userNewItems.length);
+  const choosenItem = uniqueUserItems[randomItems];
+
+  // whitespaces test
+  function checkArray() {
+    for (var i = 0; i < uniqueUserItems.length; i++) {
+      if (uniqueUserItems[i] === "") return false;
+      onBurgerSecondRuleUnderline();
+      onBurgerLastRuleUnderline();
+    }
+  }
+
+  //? empty places validation, create items
+  if (checkArray(uniqueUserItems) === false) {
+    elements.userItemInput.classList.remove("process");
+    elements.userItemInput.classList.remove("valid");
+    elements.userItemInput.classList.add("invalid");
+    console.log("Не прошёл проверку");
+
+    return;
+    //
+  } else {
+    onBurgerRemoveSecondRule();
+    onBurgerRemoveLastRule();
+
+    //! create items
+    for (let i = 0; i < uniqueUserItems.length; i++) {
+      const listItem = document.createElement("li");
+      listItem.textContent = uniqueUserItems[i];
+      listItem.classList.add("js-listItem");
+      listItem.style.color = "orange";
+
+      elements.list.append(listItem);
+    }
+  }
+
+  //! hide main
+  elements.main.style.opacity = "0";
+  setTimeout(() => {
+    elements.main.style.display = "none";
+  }, 800);
+
+  //!   make item list active
+  setTimeout(() => {
+    elements.list.style.opacity = "1";
+  }, 700);
+  //!   make "he will give you..." active
+  setTimeout(() => {
+    elements.newTitle.style.opacity = "1";
+  }, 1500);
+
+  //! make choosen item
+  setTimeout(() => {
+    elements.advertisement.textContent = choosenItem;
+  }, 2700);
+
+  // !  make choosen item active and give index-linkBtn display block
+  setTimeout(() => {
+    elements.advertisement.style.opacity = "1";
+    elements.newOrderBtn.style.display = "inline-block";
+  }, 3200);
+
+  // ! make btn active
+  setTimeout(() => {
+    elements.newOrderBtn.style.opacity = "1";
+  }, 4000);
+
+  //!   change color of choosen game
+  setTimeout(() => {
+    const advertisement = document.querySelector(".js-choosenItem");
+    advertisement.style.color = "orangered";
+  }, 3700);
+  setTimeout(() => {
+    const advertisement = document.querySelector(".js-choosenItem");
+    advertisement.style.color = "blue";
+  }, 4300);
+  setTimeout(() => {
+    const advertisement = document.querySelector(".js-choosenItem");
+    advertisement.style.color = "orangered";
+  }, 4800);
 }
+
+// Rules check
 function onRulesBeforeSubmitCheck() {
   if (
     elements.userItemInput.value !== "" ||
@@ -76,126 +187,9 @@ function onRulesBeforeSubmitCheck() {
   }
 }
 
-form.addEventListener("submit", onFormSubmit);
-function onFormSubmit(event) {
-  onRulesBeforeSubmitCheck();
-  event.preventDefault();
-
-  // validation check
-  validationCheck();
-  elements.userItemInput.classList.remove("process");
-  elements.userItemInput.classList.add("valid");
-  titleValidation();
-
-  //! here is input value with items
-  formElement = event.currentTarget.elements;
-  inputValue = formElement.items.value;
-  const userNewItems = inputValue.split(",");
-
-  function deleteWhiteSpaces() {
-    //! Удалённые пробелы
-    for (var i = 0; i < userNewItems.length; i++) {
-      userNewItems[i] = userNewItems[i].replace(/\s+/gim, "");
-    }
-  }
-  deleteWhiteSpaces();
-
-  // unique elements
-  const uniqueUserItems = userNewItems.filter(
-    (items, index, array) => array.indexOf(items) === index
-  );
-
-  //! randomizer
-  const randomItems = Math.floor(Math.random() * userNewItems.length);
-  const choosenItem = uniqueUserItems[randomItems];
-  // !
-
-  // whitespaces test
-  function checkArray(uniqueUserItems) {
-    for (var i = 0; i < uniqueUserItems.length; i++) {
-      if (uniqueUserItems[i] === "") return false;
-      onBurgerSecondRuleUnderline();
-      onBurgerLastRuleUnderline();
-    }
-  }
-  // !
-  //? empty places validation, create items
-  function emptyPlacesValidationandCreateItems() {
-    if (checkArray(uniqueUserItems) === false) {
-      elements.userItemInput.classList.remove("process");
-      elements.userItemInput.classList.remove("valid");
-      elements.userItemInput.classList.add("invalid");
-
-      return;
-      //
-    } else {
-      onBurgerRemoveSecondRule();
-      onBurgerRemoveLastRule();
-
-      //! create items
-      for (let i = 0; i < uniqueUserItems.length; i++) {
-        const listItem = document.createElement("li");
-        listItem.textContent = uniqueUserItems[i];
-        listItem.classList.add("js-listItem");
-        listItem.style.color = "orange";
-
-        elements.list.append(listItem);
-      }
-    }
-  }
-  emptyPlacesValidationandCreateItems();
-  function otherDecoration() {
-    //! hide main
-    elements.main.style.opacity = "0";
-    setTimeout(() => {
-      elements.main.style.display = "none";
-    }, 800);
-
-    //!   make item list active
-    setTimeout(() => {
-      elements.list.style.opacity = "1";
-    }, 700);
-    //!   make "he will give you..." active
-    setTimeout(() => {
-      elements.newTitle.style.opacity = "1";
-    }, 1500);
-
-    //! make choosen item
-    setTimeout(() => {
-      elements.advertisement.textContent = choosenItem;
-    }, 2700);
-
-    // !  make choosen item active and give index-linkBtn display block
-    setTimeout(() => {
-      elements.advertisement.style.opacity = "1";
-      elements.newOrderBtn.style.display = "inline-block";
-    }, 3200);
-
-    // ! make btn active
-    setTimeout(() => {
-      elements.newOrderBtn.style.opacity = "1";
-    }, 4000);
-
-    //!   change color of choosen game
-    setTimeout(() => {
-      const advertisement = document.querySelector(".js-choosenItem");
-      advertisement.style.color = "orangered";
-    }, 3700);
-    setTimeout(() => {
-      const advertisement = document.querySelector(".js-choosenItem");
-      advertisement.style.color = "blue";
-    }, 4300);
-    setTimeout(() => {
-      const advertisement = document.querySelector(".js-choosenItem");
-      advertisement.style.color = "orangered";
-    }, 4800);
-  }
-  otherDecoration();
-}
-
 // burger
 
-burgerEl.burgerContainer.addEventListener("click", onBurgerMenu);
+burgerEl.mainBurgerContainer.addEventListener("click", onBurgerMenu);
 function onBurgerMenu() {
   burgerEl.mainBurgerContainer.classList.toggle("burger-animation");
   burgerEl.mainStick.classList.toggle("burger-main-anim-geometry");

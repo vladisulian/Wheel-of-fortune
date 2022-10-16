@@ -406,6 +406,7 @@ main {
 }
 
 .burger {
+  position: relative;
   width: 100%;
   margin-left: 90px;
   margin-bottom: 25px;
@@ -436,6 +437,7 @@ main {
 
 .faq-text {
   position: absolute;
+  left: -5px;
   font-size: 12px;
   -webkit-transition: opacity, margin-left;
   transition: opacity, margin-left;
@@ -520,7 +522,7 @@ main {
 }
 
 .burger-main-anim-down-geometry {
-  height: 80px;
+  height: 95px;
 }
 
 .burger-side-anim-geometry {

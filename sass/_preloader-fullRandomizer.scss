@@ -279,6 +279,7 @@ main {
 
 // - - - - -
 .burger {
+  position: relative;
   width: 100%;
   margin-left: 90px;
   margin-bottom: 25px;
@@ -302,6 +303,7 @@ main {
 }
 .faq-text {
   position: absolute;
+  left: -5px;
   font-size: 12px;
   transition: opacity, margin-left;
   transition-duration: 700ms;
@@ -364,7 +366,7 @@ main {
   width: 250px;
 }
 .burger-main-anim-down-geometry {
-  height: 80px;
+  height: 95px;
 }
 .burger-side-anim-geometry {
   width: 0px;
