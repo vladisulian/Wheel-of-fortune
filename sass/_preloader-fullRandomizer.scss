@@ -66,7 +66,7 @@ main {
 
 .js-choosenItem {
   font-family: "Alkalami", sans-serif;
-  font-size: 45px;
+  font-size: 35px;
   margin-bottom: 75px;
 
   transition-property: color, opacity;
@@ -237,9 +237,8 @@ main {
 }
 .order-input-border {
   outline: none;
-  border: none;
-  border: 2px solid blueviolet;
 }
+
 // !
 .invalid {
   outline: 1px solid tomato;
@@ -251,6 +250,7 @@ main {
   outline: 1px solid green;
 }
 // !
+
 .order-button-submit {
   font-family: "Alkalami", sans-serif;
   font-size: 16px;
@@ -342,14 +342,19 @@ main {
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
 
-  border: 1px solid white;
   border-radius: 10px;
   background-color: transparent;
+}
+// border: 1px solid tomato;
+.burger-stick-border {
+  border: 1px solid white;
 }
 
 .burger-common-geometry {
   width: 30px;
   height: 1px;
+
+  border: 1px solid white;
 
   @media screen and (min-width: 768px) {
     height: 3px;
@@ -384,4 +389,13 @@ main {
 }
 .burger-list-active {
   opacity: 1;
+}
+.burger-rules {
+  transition: text-decoration, color;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+}
+.burger-rules-invalid {
+  text-decoration: underline;
+  color: tomato;
 }

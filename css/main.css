@@ -135,7 +135,7 @@ main {
 
 .js-choosenItem {
   font-family: "Alkalami", sans-serif;
-  font-size: 45px;
+  font-size: 35px;
   margin-bottom: 75px;
   -webkit-transition-property: color, opacity;
   transition-property: color, opacity;
@@ -366,8 +366,6 @@ main {
 
 .order-input-border {
   outline: none;
-  border: none;
-  border: 2px solid blueviolet;
 }
 
 .invalid {
@@ -498,14 +496,18 @@ main {
           transition-duration: 500ms;
   -webkit-transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
           transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
-  border: 1px solid white;
   border-radius: 10px;
   background-color: transparent;
+}
+
+.burger-stick-border {
+  border: 1px solid white;
 }
 
 .burger-common-geometry {
   width: 30px;
   height: 1px;
+  border: 1px solid white;
 }
 @media screen and (min-width: 768px) {
   .burger-common-geometry {
@@ -545,4 +547,20 @@ main {
 
 .burger-list-active {
   opacity: 1;
+}
+
+.burger-rules {
+  -webkit-transition: color, -webkit-text-decoration;
+  transition: color, -webkit-text-decoration;
+  transition: text-decoration, color;
+  transition: text-decoration, color, -webkit-text-decoration;
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
+  -webkit-transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+          transition-timing-function: cubic-bezier(2.2, 2.2, 2.2, 2);
+}
+
+.burger-rules-invalid {
+  text-decoration: underline;
+  color: tomato;
 }/*# sourceMappingURL=main.css.map */

@@ -12,6 +12,21 @@ const elements = {
   nameInput: document.querySelector("input[name='name']"),
   userItemInput: document.querySelector("input[name='items']"),
 };
+const burgerEl = {
+  mainBurgerContainer: document.querySelector(".burger"),
+  burgerContainer: document.querySelector(".burger-stick-content"),
+  mainStick: document.querySelector(".main-burger"),
+  firstSideStick: document.querySelectorAll(".side-burger")[0],
+  secondSideStick: document.querySelectorAll(".side-burger")[1],
+  faqText: document.querySelector(".faq-text"),
+  burgerList: document.querySelector(".burger-list"),
+};
+const rules = {
+  firstRule: document.querySelectorAll(".burger-rules")[0],
+  secondRule: document.querySelectorAll(".burger-rules")[1],
+  thirdRule: document.querySelectorAll(".burger-rules")[2],
+  lastRule: document.querySelectorAll(".burger-rules")[3],
+};
 
 //!  - - - - -    base properties
 elements.list.style.opacity = "0";
@@ -19,28 +34,36 @@ elements.list.style.opacity = "0";
 
 form.addEventListener("input", onValidationCheck);
 function onValidationCheck() {
-  if (elements.userItemInput.value != "") {
-    elements.userItemInput.classList.remove("invalid");
-    elements.userItemInput.classList.add("process");
-    // console.log("Go to");
+  // if (elements.userItemInput.value != "") {
+  //   elements.userItemInput.classList.remove("invalid");
+  //   elements.userItemInput.classList.add("process");
+  //   // console.log("Go to");
+  // } else
+  if (elements.userItemInput.value == "") {
+    elements.userItemInput.classList.remove("process");
+    elements.userItemInput.classList.remove("valid");
   }
 }
 
 form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
+  onRulesBeforeSubmitCheck();
   event.preventDefault();
 
   // validation check
   if (elements.userItemInput.value === "") {
+    onBurgerAllRulesUnderline();
     elements.userItemInput.classList.add("invalid");
     elements.userItemInput.classList.remove("valid");
-    // console.log("Invalid  ");
+    rules.secondRule.classList.add("burger-rules-invalid");
     alert("You need to fill this fields");
     return;
   } else if (!elements.userItemInput.value.includes(",")) {
-    alert("You must enter at least 2 words separated by commas");
+    onBurgerMenujustShow();
+    rules.thirdRule.classList.add("burger-rules-invalid");
     elements.userItemInput.classList.add("invalid");
     elements.userItemInput.classList.remove("process");
+    // alert("You must  enter at least 2 words separated by commas");
     return;
   }
   //! unexpected symbols
@@ -59,39 +82,51 @@ function onFormSubmit(event) {
     elements.nameInput.classList.add("valid");
   }
 
+  //! here is input value with items
   formElement = event.currentTarget.elements;
   inputValue = formElement.items.value;
   const userNewItems = inputValue.split(",");
 
-  // without whitespaces
-  // let userItemsWithoutSpaces = userNewItems
-  //   .toString()
-  //   .replace(/(?<=,.+)\s+/g, "")
-  //   .split(",");
-
-  // Удалённые пробелы
+  //! Удалённые пробелы
   for (var i = 0; i < userNewItems.length; i++) {
     userNewItems[i] = userNewItems[i].replace(/\s+/gim, "");
   }
-  console.log("userNewItems без пробелов:", userNewItems);
+  // console.log("userNewItems без пробелов:", userNewItems);
   const uniqueUserItems = userNewItems.filter(
     (items, index, array) => array.indexOf(items) === index
   );
   // console.log("Массив введённых пользователем элементов:", userNewItems);
-  console.log("Массив уникальных элементов без пробелов:", uniqueUserItems);
-  console.log("Количество уникальных элементов:", uniqueUserItems.length);
+  // console.log("Массив уникальных элементов без пробелов:", uniqueUserItems);
+  // console.log("Количество уникальных элементов:", uniqueUserItems.length);
 
   //! randomizer
   const randomItems = Math.floor(Math.random() * userNewItems.length);
   const choosenItem = uniqueUserItems[randomItems];
 
-  //! hide main
-  elements.main.style.opacity = "0";
-  setTimeout(() => {
-    elements.main.style.display = "none";
-  }, 800);
-  //! create items
-  if (uniqueUserItems.length >= 2) {
+  // !
+  // тест на пустые места
+  function checkArray(uniqueUserItems) {
+    for (var i = 0; i < uniqueUserItems.length; i++) {
+      if (uniqueUserItems[i] === "") return false;
+      onBurgerSecondRuleUnderline();
+      onBurgerLastRuleUnderline();
+    }
+  }
+  const checkedArray = checkArray(uniqueUserItems);
+  // !
+  //? empty places validation, create items
+  if (checkArray(uniqueUserItems) === false) {
+    elements.userItemInput.classList.remove("process");
+    elements.userItemInput.classList.remove("valid");
+    elements.userItemInput.classList.add("invalid");
+
+    return;
+    //
+  } else {
+    onBurgerRemoveSecondRule();
+    onBurgerRemoveLastRule();
+
+    //! create items
     for (let i = 0; i < uniqueUserItems.length; i++) {
       const listItem = document.createElement("li");
       listItem.textContent = uniqueUserItems[i];
@@ -100,10 +135,12 @@ function onFormSubmit(event) {
 
       elements.list.append(listItem);
     }
-  } else {
-    alert("Please enter not same text");
-    location.reload();
   }
+  //! hide main
+  elements.main.style.opacity = "0";
+  setTimeout(() => {
+    elements.main.style.display = "none";
+  }, 800);
 
   //!   make item list active
   setTimeout(() => {
@@ -143,19 +180,24 @@ function onFormSubmit(event) {
     const advertisement = document.querySelector(".js-choosenItem");
     advertisement.style.color = "orangered";
   }, 4800);
+  // - - - - -
+  // Rules check
+  function onRulesBeforeSubmitCheck() {
+    if (
+      elements.userItemInput.value !== "" ||
+      !elements.userItemInput.value.includes(";")
+    ) {
+      onBurgerRemoveSecondRule();
+      onBurgerRemoveThirdRule();
+      onBurgerRemoveLastRule();
+
+      setTimeout(onBurgerMenyjustHide(), 150);
+    }
+  }
 }
 
 // - - - - -
 // burger
-const burgerEl = {
-  mainBurgerContainer: document.querySelector(".burger"),
-  burgerContainer: document.querySelector(".burger-stick-content"),
-  mainStick: document.querySelector(".main-burger"),
-  firstSideStick: document.querySelectorAll(".side-burger")[0],
-  secondSideStick: document.querySelectorAll(".side-burger")[1],
-  faqText: document.querySelector(".faq-text"),
-  burgerList: document.querySelector(".burger-list"),
-};
 
 burgerEl.burgerContainer.addEventListener("click", onBurgerMenu);
 function onBurgerMenu() {
@@ -179,4 +221,61 @@ function onBurgerMenu() {
   ) {
     burgerEl.burgerList.classList.remove("burger-list-active");
   }
+}
+// just dropdown to show rules
+function onBurgerMenujustShow() {
+  burgerEl.mainBurgerContainer.classList.add("burger-animation");
+  burgerEl.mainStick.classList.add("burger-main-anim-geometry");
+  burgerEl.firstSideStick.classList.add("burger-side-anim-geometry");
+  burgerEl.secondSideStick.classList.add("burger-side-anim-geometry");
+  burgerEl.faqText.classList.add("faq-text-vanish");
+  setTimeout(() => {
+    burgerEl.mainStick.classList.add("burger-main-anim-down-geometry");
+  }, 400);
+  setTimeout(() => {
+    burgerEl.burgerList.classList.add("burger-list-active");
+  }, 700);
+}
+function onBurgerMenyjustHide() {
+  burgerEl.burgerList.classList.add("burger-list-active");
+
+  setTimeout(() => {
+    burgerEl.mainStick.classList.add("burger-main-anim-down-geometry");
+  }, 400);
+  setTimeout(() => {
+    burgerEl.mainBurgerContainer.classList.add("burger-animation");
+    burgerEl.mainStick.classList.add("burger-main-anim-geometry");
+    burgerEl.firstSideStick.classList.add("burger-side-anim-geometry");
+    burgerEl.secondSideStick.classList.add("burger-side-anim-geometry");
+    burgerEl.faqText.classList.add("faq-text-vanish");
+  }, 700);
+}
+// Rule's underline
+function onBurgerAllRulesUnderline() {
+  onBurgerMenujustShow();
+  onBurgerSecondRuleUnderline();
+  onBurgerThirdRuleUnderline();
+  onBurgerLastRuleUnderline();
+}
+function onBurgerSecondRuleUnderline() {
+  onBurgerMenujustShow();
+  rules.secondRule.classList.add("burger-rules-invalid");
+}
+function onBurgerThirdRuleUnderline() {
+  onBurgerMenujustShow();
+  rules.thirdRule.classList.add("burger-rules-invalid");
+}
+function onBurgerLastRuleUnderline() {
+  onBurgerMenujustShow();
+  rules.lastRule.classList.add("burger-rules-invalid");
+}
+// Remove function's
+function onBurgerRemoveSecondRule() {
+  rules.secondRule.classList.remove("burger-rules-invalid");
+}
+function onBurgerRemoveThirdRule() {
+  rules.thirdRule.classList.remove("burger-rules-invalid");
+}
+function onBurgerRemoveLastRule() {
+  rules.lastRule.classList.remove("burger-rules-invalid");
 }

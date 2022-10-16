@@ -15,7 +15,7 @@
   </head>
   <body class="index-body">
     <!-- main -->
-    <main id="main" class="container">
+    <main id="main" class="container">  
       <p class="order-title">
         Turn to the Wheel of Fortune and it will give you the answer
       </p>
@@ -25,10 +25,14 @@
           <!-- clicking mouse icon -->
           <div class="burger-stick burger-common-geometry main-burger">
             <ol class="burger-list">
-              <li>Top field is name of your list (not required)</li>
-              <li>Bottom field is required</li>
-              <li>Listing with commas</li>
-              <li>Use '-' if you need to show a whitespace.</li>
+              <li class="burger-rules">
+                Top field is name of your list (not required)
+              </li>
+              <li class="burger-rules">Bottom field is required</li>
+              <li class="burger-rules">Listing with commas</li>
+              <li class="burger-rules">
+                Use '-' if you need to show a whitespace.
+              </li>
             </ol>
           </div>
           <div class="burger-stick burger-common-geometry side-burger"></div>
@@ -41,7 +45,7 @@
           <input
             type="text"
             name="name"
-            class="order-input"
+            class="order-input order-input-border"
             placeholder="Eagle or Tails/Names/Films/Games/People/Other"
           />
         </label>
@@ -50,7 +54,7 @@
           <input
             type="text"
             name="items"
-            class="order-input"
+            class="order-input order-input-border"
             placeholder="First, second, third"
           />
         </label>
@@ -71,3 +75,10 @@
     <script src="./js/index-script.js"></script>
   </body>
 </html>
+
+<!-- const rules = {
+  firstRule: document.querySelectorAll(".burger-rules")[0],
+  secondRule: document.querySelectorAll(".burger-rules")[1],
+  thirdRule: document.querySelectorAll(".burger-rules")[2],
+  lastRule: document.querySelectorAll(".burger-rules")[3],
+}; -->
