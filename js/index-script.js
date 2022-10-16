@@ -47,7 +47,7 @@ form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
 
-  //? validation check
+  //? validation check (УСЛОВИЯ)
   if (elements.userItemInput.value === "") {
     onBurgerAllRulesUnderline();
     elements.userItemInput.classList.add("invalid");
@@ -56,21 +56,36 @@ function onFormSubmit(event) {
     rules.secondRule.classList.add("burger-rules-invalid");
     // alert("invalid");
     return;
+  } else if (
+    elements.nameInput.value !== "" &&
+    elements.userItemInput.value === ""
+  ) {
+    onBurgerRemoveAllRules();
+    onBurgerSecondRuleUnderline();
+    elements.userItemInput.classList.add("invalid");
   } else if (!elements.userItemInput.value.includes(",")) {
     buttonInvalid();
+    onBurgerRemoveAllRules();
     onBurgerThirdRuleUnderline();
     elements.userItemInput.classList.add("invalid");
     elements.userItemInput.classList.remove("process");
     // alert("You must  enter at least 2 words separated by commas");
     return;
-  } else if (elements.userItemInput.value.includes(";")) {
+  } else if (elements.userItemInput.value.includes("-")) {
+    elements.userItemInput.classList.remove("process");
+    elements.userItemInput.classList.remove("invalid");
+    elements.userItemInput.classList.add("valid");
+  } else if (
+    elements.userItemInput.value.includes("") ||
+    elements.nameInput.value.includes("")
+  ) {
+    elements.userItemInput.classList.add("invalid");
     buttonInvalid();
-    onBurgerThirdRuleUnderline();
+    onBurgerRemoveAllRules();
+    onBurgerfourthRuleUnderline();
+    console.log("Delete spaces");
     return;
   }
-
-  elements.userItemInput.classList.remove("process");
-  elements.userItemInput.classList.add("valid");
 
   function titleValidation() {
     // Title validation
@@ -104,6 +119,7 @@ function onFormSubmit(event) {
   function checkArray() {
     for (var i = 0; i < uniqueUserItems.length; i++) {
       if (uniqueUserItems[i] === "") return false;
+      onBurgerRemoveAllRules();
       onBurgerSecondRuleUnderline();
       onBurgerfourthRuleUnderline();
       onBurgerLastRuleUnderline;
