@@ -269,7 +269,7 @@ main {
   margin: 25px 0;
   border: none;
   border-radius: 10px;
-  outline: 1px solid tomato;
+  // outline: 1px solid tomato;
   background-color: transparent;
 
   cursor: pointer;
@@ -277,10 +277,13 @@ main {
   transition-property: font-size, outline;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  &-border {
+    outline: 1px solid greenyellow;
 
-  &:hover {
-    font-size: 20px;
-    outline: 2px solid tomato;
+    &:hover {
+      font-size: 20px;
+      outline: 1px solid green;
+    }
   }
 }
 

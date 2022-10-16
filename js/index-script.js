@@ -12,6 +12,7 @@ const elements = {
   secondLabel: document.querySelector("#itemList-label"),
   nameInput: document.querySelector("input[name='name']"),
   userItemInput: document.querySelector("input[name='items']"),
+  submitButton: document.querySelector(".order-button-submit"),
 };
 const burgerEl = {
   mainBurgerContainer: document.querySelector(".burger"),
@@ -46,22 +47,24 @@ form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
 
-  // validation check
-
+  //? validation check
   if (elements.userItemInput.value === "") {
     onBurgerAllRulesUnderline();
     elements.userItemInput.classList.add("invalid");
+    buttonInvalid();
     elements.userItemInput.classList.remove("valid");
     rules.secondRule.classList.add("burger-rules-invalid");
     // alert("invalid");
     return;
   } else if (!elements.userItemInput.value.includes(",")) {
+    buttonInvalid();
     onBurgerThirdRuleUnderline();
     elements.userItemInput.classList.add("invalid");
     elements.userItemInput.classList.remove("process");
     // alert("You must  enter at least 2 words separated by commas");
     return;
   } else if (elements.userItemInput.value.includes(";")) {
+    buttonInvalid();
     onBurgerThirdRuleUnderline();
     return;
   }
@@ -77,23 +80,23 @@ function onFormSubmit(event) {
   }
   titleValidation();
 
-  //! here is input value with items
+  //? input value with items
   formElement = event.currentTarget.elements;
   nameofListValue = formElement.name.value;
   inputValue = formElement.items.value;
   const userNewItems = inputValue.split(",");
 
-  //! Удалённые пробелы
+  //? Удалённые пробелы
   for (var i = 0; i < userNewItems.length; i++) {
     userNewItems[i] = userNewItems[i].replace(/\s+/gim, "");
   }
 
-  // unique elements
+  //? unique elements
   const uniqueUserItems = userNewItems.filter(
     (items, index, array) => array.indexOf(items) === index
   );
 
-  // randomizer
+  //? randomizer
   const randomItems = Math.floor(Math.random() * userNewItems.length);
   const choosenItem = uniqueUserItems[randomItems];
 
@@ -131,16 +134,7 @@ function onFormSubmit(event) {
     }
   }
   // Rules check
-  function onRulesBeforeSubmitCheck() {
-    if (
-      elements.userItemInput.value !== "" ||
-      !elements.userItemInput.value.includes(";")
-    ) {
-      onBurgerRemoveAllRules();
 
-      onBurgerMenujustHide();
-    }
-  }
   onRulesBeforeSubmitCheck();
 
   function decoration() {
@@ -288,4 +282,28 @@ function onBurgerRemovefourthRule() {
 }
 function onBurgerRemoveLastRule() {
   rules.lastRule.classList.remove("burger-rules-invalid");
+}
+// - - - -
+function onRulesBeforeSubmitCheck() {
+  if (
+    elements.userItemInput.value !== "" ||
+    !elements.userItemInput.value.includes(";")
+  ) {
+    elements.userItemInput.classList.remove("invalid");
+    buttonInvalid();
+
+    onBurgerRemoveAllRules();
+
+    onBurgerMenujustHide();
+  }
+}
+function buttonInvalid() {
+  // button color
+  if (elements.userItemInput.classList.contains("invalid")) {
+    elements.submitButton.classList.remove("order-button-submit-border");
+    elements.submitButton.classList.add("invalid");
+  } else {
+    elements.submitButton.classList.remove("invalid");
+    elements.submitButton.classList.add("order-button-submit-border");
+  }
 }

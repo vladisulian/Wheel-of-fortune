@@ -401,7 +401,6 @@ main {
   margin: 25px 0;
   border: none;
   border-radius: 10px;
-  outline: 1px solid tomato;
   background-color: transparent;
   cursor: pointer;
   -webkit-transition-property: font-size, outline;
@@ -411,9 +410,12 @@ main {
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.order-button-submit:hover {
+.order-button-submit-border {
+  outline: 1px solid greenyellow;
+}
+.order-button-submit-border:hover {
   font-size: 20px;
-  outline: 2px solid tomato;
+  outline: 1px solid green;
 }
 
 .burger {
