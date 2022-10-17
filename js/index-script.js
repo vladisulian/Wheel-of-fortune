@@ -99,9 +99,8 @@ function onFormSubmit(event) {
   const uniqueUserItems = userNewItems.filter(
     (items, index, array) => array.indexOf(items) === index
   );
-
   //? randomizer
-  const randomItems = Math.floor(Math.random() * userNewItems.length);
+  const randomItems = Math.floor(Math.random() * uniqueUserItems.length);
   const choosenItem = uniqueUserItems[randomItems];
 
   // whitespaces test
@@ -131,7 +130,7 @@ function onFormSubmit(event) {
     //! create items
     for (let i = 0; i < uniqueUserItems.length; i++) {
       const listItem = document.createElement("li");
-      listItem.textContent = uniqueUserItems[i];
+      listItem.textContent = uniqueUserItems[i].toUpperCase();
       listItem.classList.add("js-listItem");
       listItem.style.color = "orange";
 
