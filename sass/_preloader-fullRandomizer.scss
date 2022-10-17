@@ -1,7 +1,7 @@
 .change-lang {
   position: absolute;
-  top: 155px;
-  right: 190px;
+  top: -45px;
+  right: 20px;
 
   border: 1px solid greenyellow;
   border-radius: 5px;
@@ -10,9 +10,17 @@
   background: transparent;
   z-index: 1000;
 
+  transition-property: margin-top;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   & option {
     background: black;
     color: greenyellow;
+  }
+  @media (min-width: 1200px) {
+    top: 155px;
+    right: 190px;
   }
 }
 main {
@@ -129,8 +137,6 @@ main {
   flex-direction: column;
   align-items: center;
 
-  overflow: hidden;
-
   // background-image: url(/images/bg.jpg);
   // background-repeat: no-repeat;
   // background-size: cover;
@@ -193,16 +199,17 @@ main {
   }
 }
 .order-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.order-form label {
-  font-size: 20px;
+  & label {
+    font-size: 20px;
+  }
 }
 
 .order-input {
-  width: 80%;
+  width: 270px;
   height: 40px;
 
   padding-left: 20px;
@@ -216,14 +223,20 @@ main {
   transition: border, outline;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  @media screen and (min-width: 480px) and (max-width: 767px) {
+  @media (min-width: 400px) and (max-width: 479px) {
+    width: 360px;
+  }
+  @media screen and (min-width: 480px) and (max-width: 559px) {
     width: 400px;
   }
+  @media (min-width: 560px) and (max-width: 769px) {
+    width: 460px;
+  }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    width: 600px;
+    width: 680px;
   }
   @media screen and (min-width: 1200px) {
-    width: 1000px;
+    width: 1060px;
   }
 }
 .order-input-border {

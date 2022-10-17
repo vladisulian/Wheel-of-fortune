@@ -78,15 +78,3 @@ const langArr = {
     ua: "Зробити нове замовлення",
   },
 };
-
-// title
-// faq
-// firstRule
-// secondRule
-// thirdRule
-// fourthRule
-// lastRule
-// lang-label-1
-// lang-label-2
-// lang-fortune
-// lang-button-newOrder

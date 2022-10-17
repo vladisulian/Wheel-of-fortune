@@ -13,6 +13,7 @@ const elements = {
   nameInput: document.querySelector("input[name='name']"),
   userItemInput: document.querySelector("input[name='items']"),
   submitButton: document.querySelector(".order-button-submit"),
+  languageChanger: document.querySelector(".change-lang"),
 };
 const burgerEl = {
   mainBurgerContainer: document.querySelector(".burger"),
@@ -201,6 +202,8 @@ function onBurgerMenu() {
   burgerEl.firstSideStick.classList.toggle("burger-side-anim-geometry");
   burgerEl.secondSideStick.classList.toggle("burger-side-anim-geometry");
   burgerEl.faqText.classList.toggle("faq-text-vanish");
+
+  onRulesMoveLanguage();
   // burger dropdown
   setTimeout(() => {
     burgerEl.mainStick.classList.toggle("burger-main-anim-down-geometry");
@@ -224,6 +227,8 @@ function onBurgerMenujustShow() {
   burgerEl.firstSideStick.classList.add("burger-side-anim-geometry");
   burgerEl.secondSideStick.classList.add("burger-side-anim-geometry");
   burgerEl.faqText.classList.add("faq-text-vanish");
+
+  onRulesMoveLanguage();
   setTimeout(() => {
     burgerEl.mainStick.classList.add("burger-main-anim-down-geometry");
   }, 400);
@@ -235,6 +240,7 @@ function onBurgerMenujustHide() {
   burgerEl.burgerList.classList.remove("burger-list-active");
 
   burgerEl.mainStick.classList.remove("burger-main-anim-down-geometry");
+  onRulesMoveLanguage();
 
   setTimeout(() => {
     burgerEl.mainBurgerContainer.classList.remove("burger-animation");
@@ -309,5 +315,17 @@ function buttonInvalid() {
   } else {
     elements.submitButton.classList.remove("invalid");
     elements.submitButton.classList.add("order-button-submit-border");
+  }
+}
+function onRulesMoveLanguage() {
+  if (
+    !burgerEl.mainStick.classList.contains("burger-main-anim-down-geometry") &&
+    window.screen.width < "380px"
+  ) {
+    elements.languageChanger.style.marginTop = "15px";
+  } else {
+    setTimeout(() => {
+      elements.languageChanger.style.marginTop = "0";
+    }, 450);
   }
 }
