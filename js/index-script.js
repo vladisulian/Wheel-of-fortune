@@ -14,6 +14,8 @@ const elements = {
   userItemInput: document.querySelector("input[name='items']"),
   submitButton: document.querySelector(".order-button-submit"),
   languageChanger: document.querySelector(".change-lang"),
+  // - - - - -
+  randomizerSection: document.querySelector("randomizer-container"),
 };
 const burgerEl = {
   mainBurgerContainer: document.querySelector(".burger"),
@@ -143,7 +145,7 @@ function onFormSubmit(event) {
   onRulesBeforeSubmitCheck();
 
   function decoration() {
-    //! hide main
+    //! hide main and show second section
     elements.main.style.opacity = "0";
     setTimeout(() => {
       elements.main.style.display = "none";
@@ -320,7 +322,7 @@ function buttonInvalid() {
 function onRulesMoveLanguage() {
   if (
     !burgerEl.mainStick.classList.contains("burger-main-anim-down-geometry") &&
-    window.screen.width < "380px"
+    window.screen.width < 380
   ) {
     elements.languageChanger.style.marginTop = "15px";
   } else {

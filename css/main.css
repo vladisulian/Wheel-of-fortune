@@ -65,10 +65,15 @@ body {
   background: black;
   color: greenyellow;
 }
+@media (min-width: 768px) {
+  .change-lang {
+    top: -25px;
+    right: 45px;
+  }
+}
 @media (min-width: 1200px) {
   .change-lang {
-    top: 155px;
-    right: 190px;
+    right: 65px;
   }
 }
 
@@ -298,7 +303,7 @@ main {
 }
 
 .order-title {
-  margin: 50px 0;
+  margin: 30px 0px 50px 0;
   font-size: 22px;
 }
 @media screen and (min-width: 768px) {

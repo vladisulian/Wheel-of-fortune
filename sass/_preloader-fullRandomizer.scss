@@ -18,9 +18,12 @@
     background: black;
     color: greenyellow;
   }
+  @media (min-width: 768px) {
+    top: -25px;
+    right: 45px;
+  }
   @media (min-width: 1200px) {
-    top: 155px;
-    right: 190px;
+    right: 65px;
   }
 }
 main {
@@ -192,7 +195,7 @@ main {
   text-align: center;
 }
 .order-title {
-  margin: 50px 0;
+  margin: 30px 0px 50px 0;
   font-size: 22px;
   @media screen and (min-width: 768px) {
     font-size: 25px;
