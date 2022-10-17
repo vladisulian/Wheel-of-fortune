@@ -16,25 +16,35 @@
   <body class="index-body">
     <!-- main -->
     <main id="main" class="container">
-      <p class="order-title">
+      <p class="order-title lng-title">
         Turn to the Wheel of Fortune and it will give you the answer
       </p>
-      <!-- FAQ -->
+      <!-- change lang -->
+      <select class="change-lang">
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+        <option value="ua">UA</option>
+      </select>
+      <!-- FAQ  -->
       <div class="burger">
-        <p class="faq-text">How to use</p>
+        <p class="faq-text lng-faq">How to use</p>
         <div class="burger-stick-content">
           <!-- clicking mouse icon -->
           <div class="burger-stick burger-common-geometry main-burger">
             <ol class="burger-list">
-              <li class="burger-rules">
+              <li class="burger-rules lng-firstRule">
                 Top field is name of your list (not required)
               </li>
-              <li class="burger-rules">Bottom field is your list (required)</li>
-              <li class="burger-rules">Listing with commas</li>
-              <li class="burger-rules">
+              <li class="burger-rules lng-secondRule">
+                Bottom field is your list (required)
+              </li>
+              <li class="burger-rules lng-thirdRule">Listing with commas</li>
+              <li class="burger-rules lng-fourthRule">
                 Use '-' if you need to show a whitespace.
               </li>
-              <li class="burger-rules">Whitespace is unexpected.</li>
+              <li class="burger-rules lng-lastRule">
+                Whitespace is unexpected.
+              </li>
             </ol>
           </div>
           <div class="burger-stick burger-common-geometry side-burger"></div>
@@ -42,7 +52,7 @@
         </div>
       </div>
       <form class="order-form">
-        <label>
+        <label class="lang-label-1">
           What you need to randomize <span style="color: gray">*</span>
           <input
             type="text"
@@ -51,7 +61,7 @@
             placeholder="List of names: / List of games: / list of fruits: ..."
           />
         </label>
-        <label id="itemList-label">
+        <label id="itemList-label" class="lang-label-2">
           Your item list with a comas <span style="color: tomato">*</span>
           <input
             type="text"
@@ -62,7 +72,7 @@
         </label>
         <button
           type="submit"
-          class="order-button-submit order-button-submit-border"
+          class="order-button-submit order-button-submit-border lang-submit-button"
         >
           Send
         </button>
@@ -72,15 +82,19 @@
     <section class="randomizer-container container">
       <p class="name-of-list" style="opacity: 0"></p>
       <ul id="item-list"></ul>
-      <p class="js-new-title" style="opacity: 0">
+      <p class="js-new-title lang-fortune" style="opacity: 0">
         Wheel of Fortune will give you...
       </p>
       <p class="js-choosenItem" style="opacity: 0"></p>
       <button class="button-link-to-index" style="opacity: 0; display: none">
-        <a href="./index.html" id="index-link"> Make new order </a>
+        <a href="./index.html" id="index-link" class="lang-button-newOrder">
+          Make new order
+        </a>
       </button>
     </section>
     <script src="./js/index-script.js"></script>
+    <script src="./js/lang.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>
 
