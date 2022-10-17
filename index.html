@@ -52,27 +52,31 @@
         </div>
       </div>
       <form class="order-form">
-        <label class="lang-label-1">
-          What you need to randomize <span style="color: gray">*</span>
+        <label>
+          <span class="lng-firstLabel"> What you need to randomize </span>
+          <span style="color: gray">*</span>
           <input
             type="text"
             name="name"
             class="order-input order-input-border"
             placeholder="List of names: / List of games: / list of fruits: ..."
+            id="firstInput"
           />
         </label>
-        <label id="itemList-label" class="lang-label-2">
-          Your item list with a comas <span style="color: tomato">*</span>
+        <label id="itemList-label">
+          <span class="lng-secondLabel"> Your item list with a comas </span>
+          <span style="color: tomato">*</span>
           <input
             type="text"
             name="items"
-            class="order-input order-input-border"
+            class="order-input order-input-border lng-firstPlaceholder"
             placeholder="First, second, third"
+            id="secondInput"
           />
         </label>
         <button
           type="submit"
-          class="order-button-submit order-button-submit-border lang-submit-button"
+          class="order-button-submit order-button-submit-border lng-submitButton"
         >
           Send
         </button>
@@ -82,19 +86,19 @@
     <section class="randomizer-container container">
       <p class="name-of-list" style="opacity: 0"></p>
       <ul id="item-list"></ul>
-      <p class="js-new-title lang-fortune" style="opacity: 0">
+      <p class="js-new-title lng-fortune" style="opacity: 0">
         Wheel of Fortune will give you...
       </p>
       <p class="js-choosenItem" style="opacity: 0"></p>
       <button class="button-link-to-index" style="opacity: 0; display: none">
-        <a href="./index.html" id="index-link" class="lang-button-newOrder">
+        <a href="./index.html" id="index-link" class="lng-buttonNewOrder">
           Make new order
         </a>
       </button>
     </section>
-    <script src="./js/index-script.js"></script>
     <script src="./js/lang.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/index-script.js"></script>
   </body>
 </html>
 

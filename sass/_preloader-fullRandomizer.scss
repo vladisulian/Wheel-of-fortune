@@ -1,12 +1,14 @@
 .change-lang {
   position: absolute;
-  left: 0;
+  top: 155px;
+  right: 190px;
 
   border: 1px solid greenyellow;
   border-radius: 5px;
 
   color: greenyellow;
   background: transparent;
+  z-index: 1000;
 
   & option {
     background: black;
