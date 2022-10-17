@@ -43,9 +43,9 @@ const langArr = {
     ua: "Вільне місце неприпустимо ",
   },
   firstLabel: {
-    ru: "Что вам нужно зарандомить",
-    en: "What you need to randomize",
-    ua: "Що потрібно рандомізувати",
+    ru: "Ваш вопрос",
+    en: "Your question",
+    ua: "Ваше питання",
   },
   firstPlaceholder: {
     ru: "Орёл или решка?",
