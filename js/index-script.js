@@ -101,7 +101,7 @@ function onFormSubmit(event) {
   );
   //? randomizer
   const randomItems = Math.floor(Math.random() * uniqueUserItems.length);
-  const choosenItem = uniqueUserItems[randomItems];
+  const choosenItem = uniqueUserItems[randomItems].toUpperCase();
 
   // whitespaces test
   function checkArray() {
